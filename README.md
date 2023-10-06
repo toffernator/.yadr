@@ -1,5 +1,9 @@
 # yadr
 
+This repository contains my full system configurations as well as dotfiles for configuring specific programs.
+It is still very much WIP, in the future I aim to use home-manager and nix to handle everything (so few bash scripts / relying on embedded bash in nix).
+However, I am still learning these tools and I also want a usable system now, so until then it will be a good mix.
+
 ## Install
 
 ```sh

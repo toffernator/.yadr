@@ -14,6 +14,7 @@
   time.timeZone = "Europe/Amsterdam";
   i18n = {
     defaultLocale = "en_US.UTF-8";
+    # TODO: I think gcc complains with some undefined locales?
     # extraLocaleSettings = {
     # LC_ADDRESS = "en_UK.UTF-8";
     # LC_IDENTIFICATION = "en_UK.UTF-8";
@@ -90,6 +91,10 @@
       rustc
       rustup
     ];
+
+    shellAliases = {
+        todo = "$EDITOR \"$HOME\"/.todo";
+    };
   };
 
   programs = {
