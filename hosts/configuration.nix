@@ -61,16 +61,18 @@
     };
 
     systemPackages = with pkgs; [
+      alacritty
+
       # CLIs
       coreutils
       git
+      jq
       ranger
       tldr
+      unzip
       usbutils
       wget
-      unzip
       zip
-      alacritty
 
       # Video & Audio
       alsa-utils
@@ -79,8 +81,9 @@
       vlc
 
       # Productivity
-      vim
       okular
+      vim
+
       # TODO: Move to modules/editors/nvim.nix
       neovim
       # For language servers and neovim plugin
@@ -93,7 +96,7 @@
     ];
 
     shellAliases = {
-        todo = "$EDITOR \"$HOME\"/.todo";
+      todo = "$EDITOR \"$HOME\"/.todo";
     };
   };
 

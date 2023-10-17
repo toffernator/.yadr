@@ -75,6 +75,10 @@
       ungoogled-chromium
       discord
       stremio
+      nodejs_20
+      # TODO: Move to modules/programs/rstudio.nix or to shells/stan.nix for now
+      #       follow https://mc-stan.org/cmdstanr/ to get cmdstanr installed.
+      rstudio
     ];
   };
 
