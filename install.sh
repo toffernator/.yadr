@@ -35,3 +35,4 @@ fi
 # Switch to config
 echo Switching configs
 sudo nixos-rebuild switch --flake "${DOTFILES_DIR}/.#laptop"
+echo "For group membership changes to take effect it might require a reboot"

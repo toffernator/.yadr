@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/virtualization/docker.nix
   ];
 
   boot = {
