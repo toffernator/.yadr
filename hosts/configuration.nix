@@ -155,14 +155,4 @@
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     stateVersion = "23.05"; # Did you read the comment?
   };
-
-  home-manager.users.${vars.user} = {
-    home = {
-      stateVersion = "23.05";
-    };
-
-    programs = {
-      home-manager.enable = true;
-    };
-  };
 }

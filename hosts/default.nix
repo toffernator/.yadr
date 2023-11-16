@@ -26,13 +26,6 @@ in
       };
     };
     modules = [
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        imports = (import ./home.nix);
-      }
-
       ./laptop
       ./configuration.nix
     ];

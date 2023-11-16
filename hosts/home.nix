@@ -1,3 +1,0 @@
-[
-    ../modules/nvim.home.nix
-]

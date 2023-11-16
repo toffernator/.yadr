@@ -6,12 +6,6 @@
       nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-      home-manager = {
-        # User Environment Manager
-        url = "github:nix-community/home-manager/release-23.05";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-
       nixgl = {
         # Fixes OpenGL With Other Distros.
         url = "github:guibou/nixGL";
