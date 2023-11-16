@@ -30,7 +30,7 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        imports = (import ./dotfiles);
+        imports = (import ./home.nix);
       }
 
       ./laptop
