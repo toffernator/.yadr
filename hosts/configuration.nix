@@ -2,7 +2,8 @@
 
 {
   imports = (
-    import ../modules/desktops
+    import ../modules/desktops ++
+    import ../modules/editors
   );
 
   users.users.${vars.user} = {
@@ -62,6 +63,7 @@
 
     systemPackages = with pkgs; [
       alacritty
+      tmux
 
       # CLIs
       coreutils
@@ -93,6 +95,7 @@
       ripgrep
       rustc
       rustup
+      rust-analyzer
     ];
 
     shellAliases = {
@@ -141,6 +144,7 @@
       keep-derivations      = true
     '';
   };
+  
   nixpkgs.config.allowUnfree = true;
 
   system = {

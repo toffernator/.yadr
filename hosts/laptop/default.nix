@@ -69,18 +69,33 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    # Teams became insecure, and I want to be hacked
+    "teams-1.5.00.23861"
+  ];
+
   environment = {
-    systemPackages = with pkgs; [
-      teams
-      firefox
-      ungoogled-chromium
-      discord
-      stremio
-      nodejs_20
-      # TODO: Move to modules/programs/rstudio.nix or to shells/stan.nix for now
-      #       follow https://mc-stan.org/cmdstanr/ to get cmdstanr installed.
-      rstudio
-    ];
+    systemPackages = with pkgs;
+      [
+        # Edge works good for teams, I can't figure out how to have multiple team
+        # accounts using `teams` package
+        microsoft-edge
+        teams
+        firefox
+        ungoogled-chromium
+        discord
+        stremio
+        nodejs_20
+        anki-bin
+        # TODO: Move to modules/programs/rstudio.nix or to shells/stan.nix for now
+        #       follow https://mc-stan.org/cmdstanr/ to get cmdstanr installed.
+        rstudio
+
+        # TODO: Move to haskell module / neovim for the LSP
+        cabal-install
+        ghc
+        haskell-language-server
+      ];
   };
 
   # Overlay pulls latest version of Discord
