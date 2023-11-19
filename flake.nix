@@ -13,7 +13,7 @@
       };
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, ... }:
     let
       vars = {
         user = "toffer";
@@ -26,7 +26,7 @@
         # NixOS Configurations
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-unstable home-manager vars;
+          inherit inputs nixpkgs nixpkgs-unstable vars;
         }
       );
     };

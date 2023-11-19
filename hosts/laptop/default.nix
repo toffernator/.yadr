@@ -15,7 +15,11 @@
       efi.canTouchEfiVariables = true;
       timeout = 1;
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    # NVidia doesn't always play nice with linuxPackages_latest
+    # https://discourse.nixos.org/t/nvidia-fails-to-build/34392/3
+    #
+    # Using longterm version from https://kernel.org/
+    kernelPackages = pkgs.linuxPackages_6_1;
   };
 
   hardware = {
