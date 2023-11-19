@@ -69,7 +69,7 @@
       coreutils
       git
       jq
-      ranger
+      stow
       tldr
       unzip
       usbutils
@@ -83,7 +83,6 @@
       vlc
 
       # Productivity
-      okular
       vim
 
       # TODO: Move to modules/editors/nvim.nix
