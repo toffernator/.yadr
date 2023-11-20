@@ -79,9 +79,6 @@
   ];
 
   environment = {
-    variables = {
-        STOW = "alacritty,nvim,tmux";
-    };
     systemPackages = with pkgs;
       [
         # Edge works good for teams, I can't figure out how to have multiple team

@@ -27,7 +27,6 @@ with lib;
       # For language servers and plugins
       gcc
       nodejs_20
-      python311
       ripgrep
       rustc
       rustup

@@ -90,7 +90,7 @@
       # For language servers and neovim plugin
       gcc
       nodejs_20
-      python311
+      python312
       ripgrep
       rustc
       rustup
