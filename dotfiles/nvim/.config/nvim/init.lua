@@ -1,5 +1,5 @@
-require("toffer.remap")
-require("toffer.set")
+require("config.remap")
+require("config.set")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -14,18 +14,3 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
-
-require("lazy").setup({{
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function () 
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup({
-          ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "html", "python" },
-          sync_install = false,
-          highlight = { enable = true },
-          indent = { enable = true },  
-        })
-    end
- }})
