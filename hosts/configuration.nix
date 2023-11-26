@@ -96,6 +96,7 @@
       rustup
       rust-analyzer
       nodePackages_latest.typescript-language-server
+      lua-language-server
     ];
 
     shellAliases = {
