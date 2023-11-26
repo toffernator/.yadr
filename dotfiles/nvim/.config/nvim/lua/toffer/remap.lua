@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>e", vim.cmd.Lexplore)
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>")
 vim.keymap.set("n", "<leader>w", "<cmd>update<cr>")
 vim.keymap.set("n", "<leader>q", "<cmd>x<cr>")
 
