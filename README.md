@@ -10,16 +10,7 @@ However, I am still learning these tools and I also want a usable system now, so
 ./install.sh
 ```
 
-To set up `rstudio` with `cmdstanr` follow the instructions in (this)[https://mc-stan.org/cmdstanr/#installing-the-r-package] guide.
-In summary, open rstudio and run:
-```r
-# we recommend running this is a fresh R session or restarting your current session
-install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
-library(cmdstanr)
-install_cmdstan(cores = 2)
-```
-
-## Thoughts
+## Comments
 
 I recommend reading the files in execution order.
 First `flake.nix` is executed, which imports (calls on) `hosts/default.nix`, and so on.
