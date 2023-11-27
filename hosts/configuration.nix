@@ -96,6 +96,8 @@
       rustup
       rust-analyzer
       nodePackages_latest.typescript-language-server
+      nodePackages_latest.vscode-langservers-extracted
+      nodePackages."@tailwindcss/language-server"
       lua-language-server
       fd
     ];
