@@ -81,6 +81,13 @@
       pipewire
       pulseaudio
       vlc
+      (wrapOBS {
+        plugins = with obs-studio-plugins; [
+          wlrobs
+          obs-backgroundremoval
+          obs-pipewire-audio-capture
+        ];
+      })
 
       # Productivity
       vim
