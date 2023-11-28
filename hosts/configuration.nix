@@ -105,6 +105,7 @@
       nodePackages_latest.typescript-language-server
       nodePackages_latest.vscode-langservers-extracted
       nodePackages."@tailwindcss/language-server"
+      nodePackages_latest.pyright
       lua-language-server
       fd
     ];
