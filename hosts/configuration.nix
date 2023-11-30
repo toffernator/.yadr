@@ -102,6 +102,7 @@
       rustc
       rustup
       rust-analyzer
+      haskell-language-server
       nodePackages_latest.typescript-language-server
       nodePackages_latest.vscode-langservers-extracted
       nodePackages."@tailwindcss/language-server"
