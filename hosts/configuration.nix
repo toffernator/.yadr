@@ -91,6 +91,7 @@
 
       # Productivity
       vim
+      vscode
 
       # TODO: Move to modules/editors/nvim.nix
       neovim
