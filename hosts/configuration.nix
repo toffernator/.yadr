@@ -40,7 +40,7 @@
     sudo.wheelNeedsPassword = false;
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     # Fonts
     carlito # NixOS
     vegur # NixOS
@@ -110,7 +110,7 @@
       nodePackages_latest.vscode-langservers-extracted
       nodePackages."@tailwindcss/language-server"
       nodePackages_latest.pyright
-      luajitPackages.lua-lsp
+      lua-language-server
       fd
     ];
 
