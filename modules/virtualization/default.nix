@@ -1,3 +1,3 @@
 [
-    ./docker.nix
+  ./docker.nix
 ]

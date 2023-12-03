@@ -1,3 +1,3 @@
 [
-    ./rstudio.nix
+  ./rstudio.nix
 ]
