@@ -68,6 +68,7 @@
       # CLIs
       coreutils
       git
+      glow
       jq
       stow
       tldr
