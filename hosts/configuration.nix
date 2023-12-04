@@ -76,6 +76,7 @@
       usbutils
       wget
       zip
+      ffmpeg
 
       # Video & Audio
       alsa-utils
@@ -93,6 +94,7 @@
       # Productivity
       vim
       vscode
+      wl-clipboard
 
       # TODO: Move to modules/editors/nvim.nix
       neovim
