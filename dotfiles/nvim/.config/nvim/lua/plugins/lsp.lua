@@ -70,11 +70,14 @@ return {
             })
 
             local lspconfig = require("lspconfig")
-            lspconfig.tsserver.setup({})
+            lspconfig.tsserver.setup({
+                filetypes = { "astro", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+            })
             lspconfig.tailwindcss.setup{}
             lspconfig.pyright.setup{}
             lspconfig.lua_ls.setup{}
             lspconfig.nil_ls.setup{}
+            lspconfig.astro.setup{}
             lspconfig.eslint.setup({
                 on_attach = function(client, bufnr)
                     vim.api.nvim_create_autocmd("BufWritePre", {
