@@ -77,6 +77,7 @@
       wget
       zip
       ffmpeg
+      lazygit
 
       # Video & Audio
       alsa-utils
