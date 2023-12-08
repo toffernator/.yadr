@@ -117,6 +117,7 @@
       prettierd
       nodePackages.prettier
       lua-language-server
+      vscode-langservers-extracted
       fd
     ];
 
