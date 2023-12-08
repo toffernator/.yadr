@@ -113,6 +113,8 @@
       nodePackages."@tailwindcss/language-server"
       nodePackages."@astrojs/language-server"
       nodePackages_latest.pyright
+      prettierd
+      nodePackages.prettier
       lua-language-server
       fd
     ];
