@@ -1,3 +1,0 @@
-[
-  ./rstudio.nix
-]
