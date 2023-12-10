@@ -3,7 +3,7 @@
 {
   imports = (
     import ../modules/desktops ++
-    import ../modules/editors
+    import ../modules/virtualization.nix
   );
 
   users.users.${vars.user} = {
@@ -69,6 +69,7 @@
       coreutils
       git
       glow
+
       jq
       stow
       tldr
