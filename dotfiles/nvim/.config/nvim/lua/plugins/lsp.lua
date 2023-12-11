@@ -75,6 +75,8 @@ return {
             })
             lspconfig.tailwindcss.setup{}
             lspconfig.pyright.setup{}
+            lspconfig.html.setup{}
+            lspconfig.gopls.setup{}
             lspconfig.lua_ls.setup{}
             lspconfig.nil_ls.setup{}
             lspconfig.astro.setup{}

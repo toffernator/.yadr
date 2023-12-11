@@ -104,6 +104,7 @@
       gcc
       nodejs_20
       python312
+      go
       ripgrep
       rustc
       rustup
