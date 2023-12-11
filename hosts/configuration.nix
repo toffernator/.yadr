@@ -3,7 +3,7 @@
 {
   imports = (
     import ../modules/desktops ++
-    import ../modules/virtualization.nix
+    import ../modules/virtualization
   );
 
   users.users.${vars.user} = {
