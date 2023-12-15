@@ -100,6 +100,7 @@
 
       # Development
       nodePackages_latest.nodemon
+      python311Packages.pip
 
       # TODO: Move to modules/editors/nvim.nix
       neovim
