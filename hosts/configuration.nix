@@ -98,6 +98,9 @@
       vscode
       wl-clipboard
 
+      # Development
+      nodePackages_latest.nodemon
+
       # TODO: Move to modules/editors/nvim.nix
       neovim
       # For language servers and neovim plugin
