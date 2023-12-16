@@ -3,14 +3,15 @@ return {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         config = function()
-            -- TODO: Figure out what half of it does and clean-up
+            -- Black wizardry sets up lsp-zero
             local lsp = require("lsp-zero")
-            lsp.preset("recommended") -- no clue what this does
-            lsp.extend_lspconfig()
+            lsp.preset("recommended") -- Can't find any documentation on what this does
+            lsp.extend_lspconfig() -- Has something to do with cmp integrations
             lsp.on_attach(function(client, bufnr)
-                -- Set custom keymaps, need to find a way to pass desc for whichkey
                 local opts = { buffer = bufnr, remap = false }
-
+                -- custom keybinds, need a way to describe a desc for which-key,
+                -- would be nice if this is done where the key-binding is defined,
+                -- here, and not in the wk.register()
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
                 vim.keymap.set("n", "<leader>lh", function() vim.lsp.buf.hover() end, opts)
                 vim.keymap.set("n", "<leader>lws", function() vim.lsp.buf.workspace_symbol() end, opts)
