@@ -2,6 +2,7 @@
 -- Look into media-files:
 -- "nvim-telescope/telescope-media-files.nvim"
 -- in init: telescope.load_extension("media_files")
+-- manix telescope
 
 return {
     'nvim-telescope/telescope.nvim',
@@ -13,7 +14,7 @@ return {
                 file_ignore_patterns = { ".git" }
             },
             pickers = {
-                git_commits = { theme = "dropdown" }
+                git_commits = { theme = "dropdown" },
             },
             extensions = {
                 glyph = {
@@ -25,10 +26,10 @@ return {
             },
         }
 
-        telescope.load_extension("lazy")
-        telescope.load_extension("glyph")
-        telescope.load_extension("emoji")
-        telescope.load_extension("gh")
+        local extensions = {"lazy", "emoji", "glyph", "gh"}
+        for _, extension in pairs(extensions) do
+            telescope.load_extension(extension)
+        end
     end,
     keys = {
         { "<leader>sf",  "<cmd>Telescope find_files hidden=true<cr>",    desc = "Search files" },
