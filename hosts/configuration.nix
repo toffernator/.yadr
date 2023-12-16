@@ -71,6 +71,7 @@
       glow
 
       jq
+      gh
       stow
       tldr
       unzip
