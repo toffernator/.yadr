@@ -34,7 +34,7 @@ return {
                     ['<S-Tab>'] = nil
                 }),
                 sources = {
-                    {name = 'nvim_lsp'},
+                    { name = 'nvim_lsp' },
                 }
             })
 
@@ -73,13 +73,38 @@ return {
             lspconfig.tsserver.setup({
                 filetypes = { "astro", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
             })
-            lspconfig.tailwindcss.setup{}
-            lspconfig.pyright.setup{}
-            lspconfig.html.setup{}
-            lspconfig.gopls.setup{}
-            lspconfig.lua_ls.setup{}
-            lspconfig.nil_ls.setup{}
-            lspconfig.astro.setup{}
+            lspconfig.tailwindcss.setup {}
+            lspconfig.pyright.setup {}
+            lspconfig.html.setup {}
+            lspconfig.gopls.setup {}
+            lspconfig.lua_ls.setup {
+                settings = {
+                    Lua = {
+                        runtime = {
+                            -- Tell the language server which version of Lua you're using
+                            -- (most likely LuaJIT in the case of Neovim)
+                            version = 'LuaJIT',
+                        },
+                        diagnostics = {
+                            -- Get the language server to recognize the `vim` global
+                            globals = {
+                                'vim',
+                                'require'
+                            },
+                        },
+                        workspace = {
+                            -- Make the server aware of Neovim runtime files
+                            library = vim.api.nvim_get_runtime_file("", true),
+                        },
+                        -- Do not send telemetry data containing a randomized but unique identifier
+                        telemetry = {
+                            enable = false,
+                        },
+                    },
+                },
+            }
+            lspconfig.nil_ls.setup {}
+            lspconfig.astro.setup {}
             lspconfig.eslint.setup({
                 on_attach = function(client, bufnr)
                     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -90,8 +115,8 @@ return {
             })
         end
     },
-    {'neovim/nvim-lspconfig'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'hrsh7th/nvim-cmp'},
-    {'L3MON4D3/LuaSnip'},
+    { 'neovim/nvim-lspconfig' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'L3MON4D3/LuaSnip' },
 }
