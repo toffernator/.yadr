@@ -1,10 +1,14 @@
+-- TODO:
+-- - Where do I define keymaps?
+-- - I want better compile errors in nvim
+
 return {
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         config = function()
             -- TODO: Figure out what half of it does and clean-up
-
+            
             local lsp = require("lsp-zero")
             lsp.extend_lspconfig()
 
