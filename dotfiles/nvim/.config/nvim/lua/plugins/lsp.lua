@@ -2,8 +2,8 @@ return {
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
-        iit = function()
-            -- Black wizadry for setting up lsp-zero
+        config = function()
+            -- TODO: Figure out what half of it does and clean-up
             local lsp = require("lsp-zero")
             lsp.preset("recommended") -- no clue what this does
             lsp.extend_lspconfig()
