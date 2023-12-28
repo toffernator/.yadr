@@ -6,8 +6,8 @@ return {
             -- Black wizardry sets up lsp-zero
             local lsp = require("lsp-zero")
             lsp.preset("recommended") -- Can't find any documentation on what this does
-            lsp.extend_lspconfig() -- Has something to do with cmp integrations
-            lsp.on_attach(function(client, bufnr)
+            lsp.extend_lspconfig()    -- Has something to do with cmp integrations
+            lsp.on_attach(function(_, bufnr)
                 local opts = { buffer = bufnr, remap = false }
                 -- custom keybinds, need a way to describe a desc for which-key,
                 -- would be nice if this is done where the key-binding is defined,
