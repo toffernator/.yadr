@@ -1,15 +1,13 @@
 { config, lib, pkgs, inputs, vars, ... }:
 
 {
-  imports = (
-    import ../modules/desktops ++
-    import ../modules/virtualization
-  );
+  imports = (import ../modules/desktops ++ import ../modules/virtualization);
 
   users.users.${vars.user} = {
     # System User
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
+    extraGroups =
+      [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
   };
 
   time.timeZone = "Europe/Amsterdam";
@@ -47,11 +45,7 @@
     jetbrains-mono
     font-awesome
     corefonts # Microsoft Fonts
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-      ];
-    })
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   environment = {
@@ -62,82 +56,19 @@
     };
 
     systemPackages = with pkgs; [
-      alacritty
-      tmux
-
-      # CLIs
       coreutils
       git
-      glow
-
-      jq
-      gh
-      stow
-      tldr
-      unzip
-      usbutils
       wget
       zip
-      ffmpeg
-      lazygit
-
-      # Video & Audio
-      alsa-utils
-      pipewire
-      pulseaudio
-      vlc
-      (wrapOBS {
-        plugins = with obs-studio-plugins; [
-          wlrobs
-          obs-backgroundremoval
-          obs-pipewire-audio-capture
-        ];
-      })
-
-      # Productivity
-      vim
-      vscode
+      unzip
       wl-clipboard
-
-      # Development
-      nodePackages_latest.nodemon
-      python311Packages.pip
-
-      # TODO: Move to modules/editors/nvim.nix
-      neovim
-      # For language servers and neovim plugin
-      gcc
-      nodejs_20
-      python312
-      go
-      ripgrep
-      rustc
-      rustup
-      rust-analyzer
-      haskell-language-server
-      nil
-      nodePackages_latest.typescript-language-server
-      nodePackages_latest.vscode-langservers-extracted
-      nodePackages."@tailwindcss/language-server"
-      nodePackages."@astrojs/language-server"
-      nodePackages_latest.pyright
-      gopls
-      prettierd
-      nodePackages.prettier
-      lua-language-server
-      vscode-langservers-extracted
-      fd
-      nixfmt
+      vim
     ];
 
-    shellAliases = {
-      todo = "$EDITOR \"$HOME\"/.todo";
-    };
+    shellAliases = { todo = ''$EDITOR "$HOME"/.todo''; };
   };
 
-  programs = {
-    dconf.enable = true;
-  };
+  programs = { dconf.enable = true; };
 
   services = {
     printing = {
@@ -160,9 +91,7 @@
 
   nix = {
     # Nix Package Manager Settings
-    settings = {
-      auto-optimise-store = true;
-    };
+    settings = { auto-optimise-store = true; };
     gc = {
       # Garbage Collection
       automatic = true;
