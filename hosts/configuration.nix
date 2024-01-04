@@ -154,6 +154,7 @@
       jack.enable = true;
     };
     openssh.enable = true;
+    flatpak.enable = true;
   };
 
   nix = {
