@@ -127,6 +127,7 @@
       lua-language-server
       vscode-langservers-extracted
       fd
+      nixfmt
     ];
 
     shellAliases = {
