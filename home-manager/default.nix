@@ -54,6 +54,7 @@ in {
     nodePackages."@astrojs/language-server"
     nodePackages_latest.pyright
     gopls
+    typst-lsp
     prettierd
     nodePackages.prettier
     lua-language-server

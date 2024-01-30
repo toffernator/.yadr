@@ -22,6 +22,7 @@
   "telescope-glyph.nvim": { "branch": "master", "commit": "f63f01e129e71cc25b79637610674bbf0be5ce9d" },
   "telescope-lazy.nvim": { "branch": "main", "commit": "7a360fc33d0728cf0c18c0032ca36ebfe3cd2a8c" },
   "telescope.nvim": { "branch": "master", "commit": "7011eaae0ac1afe036e30c95cf80200b8dc3f21a" },
+  "typst.vim": { "branch": "main", "commit": "816ba15885cb5eb742e06bafcd53b1a8531d334b" },
   "vim-fugitive": { "branch": "master", "commit": "854a8df0d06b8d3fcb30fa7f2b08c62b553eee3b" },
   "vim-moonfly-colors": { "branch": "master", "commit": "fb27da9cf29c56e8031adc4df6674bac6373d7c3" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
