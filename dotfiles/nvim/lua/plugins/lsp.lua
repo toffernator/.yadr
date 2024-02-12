@@ -33,7 +33,7 @@ return {
                 }
             })
             -- All the language servers with default configs
-            lsp.setup_servers({ "pyright", "tailwindcss", "html", "gopls", "nil_ls", "astro" })
+            lsp.setup_servers({ "pyright", "tailwindcss", "html", "gopls", "nil_ls", "astro", "gopls" })
 
             -- Auto-compleition
             local cmp = require('cmp')
@@ -91,14 +91,14 @@ return {
                     },
                 },
             }
-            lspconfig.eslint.setup({
-                on_attach = function(_, bufnr)
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        buffer = bufnr,
-                        command = "EslintFixAll",
-                    })
-                end,
-            })
+            --            lspconfig.eslint.setup({
+            --                on_attach = function(_, bufnr)
+            --                    vim.api.nvim_create_autocmd("BufWritePre", {
+            --                        buffer = bufnr,
+            --                        command = "EslintFixAll",
+            --                    })
+            --                end,
+            --            })
             lspconfig.typst_lsp.setup {
                 settings = {
                     exportPdf = "onType" -- Choose onType, onSave or never.
