@@ -18,6 +18,8 @@
     ffmpeg
     lazygit
 
+    zotero
+
     # Video & Audio
     alsa-utils
     pipewire
