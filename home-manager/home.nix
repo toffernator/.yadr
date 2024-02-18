@@ -49,6 +49,7 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
   home.packages = with pkgs; [
+    chromium
     htop
     alacritty
     tmux
@@ -58,7 +59,6 @@
     ffmpeg
     lazygit
     zotero
-    signal-dekstop
 
     # Video & Audio
     vlc
