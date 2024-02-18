@@ -241,6 +241,12 @@
     };
   };
 
+  systemd.tmpfiles.rules = [
+    # Temporary Bluetooth Fix
+    "d /var/lib/bluetooth 700 root root - -"
+  ];
+  systemd.targets."bluetooth".after = [ "systemd-tmpfiles-setup.service" ];
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
 }
