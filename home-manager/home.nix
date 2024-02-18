@@ -48,6 +48,33 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
+  home.packages = with pkgs; [
+    htop
+    alacritty
+    tmux
+    jq
+    gh
+    tldr
+    ffmpeg
+    lazygit
+    zotero
+    signal-dekstop
+
+    # Video & Audio
+    vlc
+    (wrapOBS {
+      plugins = with obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+      ];
+    })
+
+    # Development
+    vscode
+    nodePackages_latest.nodemon
+    python311Packages.pip
+  ];
   neovim.enable = true;
 
   # Enable home-manager and git

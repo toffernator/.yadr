@@ -215,6 +215,10 @@
       unzip
       wl-clipboard
       vim
+
+      alsa-utils
+      pipewire
+      pulseaudio
     ];
 
     shellAliases = { todo = ''$EDITOR "$HOME"/.todo''; };
