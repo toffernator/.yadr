@@ -94,6 +94,47 @@
     };
   };
 
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+  };
+
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+    sudo.wheelNeedsPassword = false;
+  };
+
+  environment = {
+    variables = {
+      TERMINAL = "alacritty";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
+
+    systemPackages = with pkgs; [
+      coreutils
+      git
+      wget
+      zip
+      unzip
+      wl-clipboard
+      vim
+    ];
+
+    shellAliases = { todo = ''$EDITOR "$HOME"/.todo''; };
+  };
+
+  fonts.packages = with pkgs; [
+    # Fonts
+    carlito # NixOS
+    vegur # NixOS
+    jetbrains-mono
+    font-awesome
+    corefonts # Microsoft Fonts
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
+
   gnome.enable = true;
 
   home-manager = {
