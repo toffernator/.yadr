@@ -49,6 +49,22 @@
   nix.registry = (lib.mapAttrs (_: flake: { inherit flake; }))
     ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
+  nix = {
+    # Nix Package Manager Settings
+    gc = {
+      # Garbage Collection
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 2d";
+    };
+    package = pkgs.nixVersions.unstable; # Enable Flakes
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs          = true
+      keep-derivations      = true
+    '';
+  };
+
   # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
   nix.nixPath = [ "/etc/nix/path" ];
@@ -94,6 +110,27 @@
     };
   };
 
+  # Necessary for pipewire
+  hardware.pulseaudio.enable = false;
+
+  services = {
+    printing = {
+      # CUPS
+      enable = true;
+    };
+    pipewire = {
+      # Sound
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true;
+      jack.enable = true;
+    };
+    flatpak.enable = true;
+  };
+
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
@@ -136,6 +173,7 @@
   ];
 
   gnome.enable = true;
+  programs = { dconf.enable = true; };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
