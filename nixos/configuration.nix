@@ -147,6 +147,7 @@
 
       alsa-utils
       pipewire
+      wireplumber
       pulseaudio
     ];
 
