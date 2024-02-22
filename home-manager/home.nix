@@ -50,6 +50,7 @@
   # home.packages = with pkgs; [ steam ];
   home.packages = with pkgs; [
     chromium
+    firefox
     htop
     alacritty
     tmux
@@ -59,6 +60,7 @@
     ffmpeg
     lazygit
     zotero
+    signal-desktop
 
     # Video & Audio
     vlc
