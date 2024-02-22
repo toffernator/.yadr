@@ -15,6 +15,7 @@
     ./parts/uni.nix
     ./parts/utils.nix
     ./parts/nvim.nix
+    ./hyprland.nix
   ];
 
   nixpkgs = {
@@ -58,6 +59,7 @@
   utils.enable = true;
   uni.enable = true;
   neovim.enable = true;
+  hyprland.enable = true;
 
   # Enable home-manager and git
   programs.home-manager.enable = true;

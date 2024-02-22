@@ -1,6 +1,5 @@
-#  Gnome Configuration
+# Gnome Configuration
 #  Enable with "gnome.enable = true;"
-#
 
 { config, lib, pkgs, vars, ... }:
 

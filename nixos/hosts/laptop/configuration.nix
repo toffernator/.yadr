@@ -1,6 +1,6 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
 
-  imports = [ ../../desktops/gnome.nix ];
+  imports = [ ../../desktops ];
 
   networking.hostName = "lappietoppie";
 
@@ -89,7 +89,7 @@
     flatpak.enable = true;
   };
 
-  gnome.enable = true;
+  hyprland.enable = true;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
   programs = { dconf.enable = true; };
