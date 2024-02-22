@@ -14,7 +14,8 @@ in with lib; {
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
-        exec-once = [ "${startupScript}/bin/start" "${pkgs.firefox}" ];
+        exec-once =
+          [ "${startupScript}/bin/start" "${pkgs.alacritty}/bin/alacritty" ];
 
         "$mod" = "SUPER";
 
