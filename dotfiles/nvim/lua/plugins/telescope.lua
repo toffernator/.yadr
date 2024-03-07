@@ -26,7 +26,9 @@ return {
             },
         }
 
-        local extensions = {"lazy", "emoji", "glyph", "gh"}
+        -- TODO: For some reason the dependencies aren't being installed!?
+        -- local extensions = { "lazy", "emoji", "glyph", "gh" }
+        local extensions = {}
         for _, extension in pairs(extensions) do
             telescope.load_extension(extension)
         end
