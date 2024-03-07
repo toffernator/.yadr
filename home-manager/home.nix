@@ -10,7 +10,11 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./nvim.nix
+    ./parts/media.nix
+    ./parts/social.nix
+    ./parts/uni.nix
+    ./parts/utils.nix
+    ./parts/nvim.nix
   ];
 
   nixpkgs = {
@@ -48,35 +52,11 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
-  home.packages = with pkgs; [
-    chromium
-    firefox
-    htop
-    alacritty
-    tmux
-    jq
-    gh
-    tldr
-    ffmpeg
-    lazygit
-    zotero
-    signal-desktop
+  home.packages = with pkgs; [ chromium firefox alacritty tmux ];
 
-    # Video & Audio
-    vlc
-    (wrapOBS {
-      plugins = with obs-studio-plugins; [
-        wlrobs
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-      ];
-    })
-
-    # Development
-    vscode
-    nodePackages_latest.nodemon
-    python311Packages.pip
-  ];
+  social.enable = true;
+  utils.enable = true;
+  uni.enable = true;
   neovim.enable = true;
 
   # Enable home-manager and git
