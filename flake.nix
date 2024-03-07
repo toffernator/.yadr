@@ -13,6 +13,11 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+     };
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
     hyprland.url = "github:hyprwm/Hyprland";
@@ -66,6 +71,26 @@
             ./operating-systems/nixos/hosts/laptop
           ];
         };
+      };
+     ;
+      darwinConfigurations = {
+        Christoffers-Macbook-Pro = darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./darwin/configuration.nix
+
+            home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.toffer = import ./home-manager/home.nix;
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+            extraSpecialArgs = { inherit inputs outputs; };
+          }
+        ];
+	      };
       };
     };
 }
