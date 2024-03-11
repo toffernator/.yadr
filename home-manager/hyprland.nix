@@ -2,6 +2,9 @@
 
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/github_ed25519
+
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator & disown
@@ -35,6 +38,7 @@ in with lib; {
           "$mod, h, movefocus, r"
           "$mod, k, movefocus, u"
           "$mod, j, movefocus, d"
+          "$mod, F, fullscreen,"
 
           "$mod, 1, workspace, 1"
           "$mod, 2, workspace, 2"
@@ -46,10 +50,10 @@ in with lib; {
           "$mod, 8, workspace, 8"
           "$mod, 9, workspace, 9"
 
-          "$mod, F, fullscreen,"
-          "$mod, Q, killactive,"
+          "$mod, Q, killactive"
           "$mod, M, exit"
 
+          "$mod, D, exec, ${pkgs.bemenu}/bin/bemenu-run -c"
           "$mod, B, exec, ${pkgs.firefox}/bin/firefox"
           "$mod, T, exec, ${pkgs.alacritty}/bin/alacritty"
         ];

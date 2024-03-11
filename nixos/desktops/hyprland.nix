@@ -23,6 +23,7 @@ with lib; {
       swww
       dunst
       playerctl
+      bemenu
 
       # networking
       networkmanagerapplet # GUI for networkmanager
