@@ -18,15 +18,17 @@ with lib; {
 
     networking.networkmanager.enable = true;
 
+    environment.variables.NIXOS_OZONE_WL = "1";
+
     environment.systemPackages = with pkgs; [
       waybar
       swww
       dunst
       playerctl
       bemenu
-
-      # networking
-      networkmanagerapplet # GUI for networkmanager
+      polkit-kde-agent
+      networkmanagerapplet
+      blueberry
     ];
   };
 

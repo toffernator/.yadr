@@ -8,6 +8,7 @@ let
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator & disown
+    ${pkgs.polkit-kde-agent}/bin/polk
   '';
 in with lib; {
   options = {
@@ -19,6 +20,12 @@ in with lib; {
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
+        env = [
+          "LIBVA_DRIVER_NAME,nvidia"
+          "XDG_SESSION_TYPE,wayland"
+          "WLR_NO_HARDWARE_CURSORS,1"
+        ];
+
         exec-once =
           [ "${startupScript}/bin/start" "${pkgs.alacritty}/bin/alacritty" ];
 
@@ -67,6 +74,11 @@ in with lib; {
           # volume
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
           ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ];
+
+        monitor = [
+          "eDP-1,1920x1080@60,0x0,1,mirror"
+          "HDMI-A-1,1920x1080@60,auto,1,mirror,eDP-1"
         ];
 
         bindle = [
