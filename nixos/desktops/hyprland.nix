@@ -29,6 +29,7 @@ with lib; {
       polkit-kde-agent
       networkmanagerapplet
       blueberry
+      pyprland
     ];
   };
 

@@ -7,16 +7,20 @@ let
 
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
+    ${pkgs.swww}/bin/swww image ~/.yadr/backgrounds/wallhalla-17-1920x1080.jpg
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator & disown
-    ${pkgs.polkit-kde-agent}/bin/polk
+    ${pkgs.pyprland}/bin/pypr &
   '';
+  # TODO: 
+  # ${pkgs.polkit-kde-agent}/bin/polk
+  dotfilesDir =
+    config.lib.file.mkOutOfStoreSymlink "/home/toffer/.yadr/dotfiles";
 in with lib; {
   options = {
     hyprland.enable = mkEnableOption
       (mdDoc "hyprland configuration, make sure to also enable it in nixos");
   };
   config = mkIf (config.hyprland.enable) {
-
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
@@ -63,6 +67,10 @@ in with lib; {
           "$mod, D, exec, ${pkgs.bemenu}/bin/bemenu-run -c"
           "$mod, B, exec, ${pkgs.firefox}/bin/firefox"
           "$mod, T, exec, ${pkgs.alacritty}/bin/alacritty"
+
+          "$mod SHIFT,M,exec,pypr toggle stb stb-logs"
+          "$mod,A,exec,pypr toggle term"
+          "$mod,V,exec,pypr toggle volume"
         ];
 
         bindl = [
@@ -90,6 +98,19 @@ in with lib; {
         decoration.rounding = 5;
 
         windowrule = [ "workspace 1, alacritty" "workspace 2, firefox" ];
+      };
+    };
+
+    home.file = {
+      "pyprland" = {
+        enable = true;
+        source = "${dotfilesDir}/pyprland/pyprland.toml";
+        target = ".config/hypr/pyprland.toml";
+      };
+      "waybar" = {
+        enable = true;
+        source = "${dotfilesDir}/waybar/config.jsonc";
+        target = ".config/waybar/config.jsonc";
       };
     };
   };
