@@ -109,8 +109,9 @@ in with lib; {
       };
       "waybar" = {
         enable = true;
-        source = "${dotfilesDir}/waybar/config.jsonc";
-        target = ".config/waybar/config.jsonc";
+        source = "${dotfilesDir}/waybar";
+        target = ".config/waybar";
+        recursive = true;
       };
     };
   };
