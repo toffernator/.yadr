@@ -8,12 +8,18 @@ let
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator & disown
     ${pkgs.pyprland}/bin/pypr &
   '';
-  dotfilesDir =
-    config.lib.file.mkOutOfStoreSymlink "/home/toffer/.yadr/dotfiles";
+  dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.hyprland.dotfiles;
 in with lib; {
   options = {
     hyprland.enable = mkEnableOption
       (mdDoc "hyprland configuration, make sure to also enable it in nixos");
+    hyprland.dotfiles = mkOption {
+      type = types.path;
+      default = "/home/toffer/.yadr/dotfiles";
+      description = lib.mdDoc
+        "A path to a directory containing dotfiles for pyprland and waybar";
+    };
+
   };
   config = mkIf (config.hyprland.enable) {
     home.sessionVariables = {

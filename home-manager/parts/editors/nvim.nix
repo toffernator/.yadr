@@ -1,12 +1,17 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let
-  dotfilesDir =
-    config.lib.file.mkOutOfStoreSymlink "/home/toffer/.yadr/dotfiles";
+let dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.neovim.dotfiles;
 in {
   imports = [ ];
-  options = { neovim.enable = mkEnableOption (mdDoc "neovim"); };
+  options = {
+    neovim.enable = mkEnableOption (mdDoc "neovim");
+    neovim.dotfiles = mkOption {
+      type = types.path;
+      default = "/home/toffer/.yadr/dotfiles/nvim";
+      description = lib.mdDoc "The path to the dotfiles configuring neovim";
+    };
+  };
   config = mkIf (config.neovim.enable) {
     home.packages = with pkgs; [
       neovim
@@ -39,7 +44,7 @@ in {
     home.file = {
       "nvim" = {
         enable = true;
-        source = "${dotfilesDir}/nvim";
+        source = "${dotfilesDir}";
         target = ".config/nvim";
         recursive = true;
       };
