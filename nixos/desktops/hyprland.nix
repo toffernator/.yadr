@@ -17,21 +17,6 @@ with lib; {
     };
 
     networking.networkmanager.enable = true;
-
-    environment.variables.NIXOS_OZONE_WL = "1";
-
-    environment.systemPackages = with pkgs; [
-      lxqt.lxqt-policykit
-      waybar
-      swww
-      dunst
-      playerctl
-      bemenu
-      polkit-kde-agent
-      networkmanagerapplet
-      blueberry
-      pyprland
-    ];
   };
 
 }

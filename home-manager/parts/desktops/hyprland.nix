@@ -16,16 +16,28 @@ in with lib; {
       (mdDoc "hyprland configuration, make sure to also enable it in nixos");
   };
   config = mkIf (config.hyprland.enable) {
+    home.sessionVariables = {
+      LIBVA_DRIVER_NAME = "nvidia";
+      XDG_SESSION_TYPE = "wayland";
+      WLR_NO_HARDWARE_CURSORS = "1";
+      NIXOS_OZONE_WL = "1";
+    };
+
+    home.packages = with pkgs; [
+      lxqt.lxqt-policykit
+      waybar
+      swww
+      dunst
+      playerctl
+      bemenu
+      networkmanagerapplet
+      blueberry
+      pyprland
+    ];
+
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
-        env = [
-          "LIBVA_DRIVER_NAME,nvidia"
-          "XDG_SESSION_TYPE,wayland"
-          "WLR_NO_HARDWARE_CURSORS,1"
-          "NIXOS_OZONE_WL,1"
-        ];
-
         exec-once = [
           "${startupScript}/bin/start"
           "${pkgs.alacritty}/bin/alacritty"
