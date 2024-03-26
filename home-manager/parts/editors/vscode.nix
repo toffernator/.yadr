@@ -4,7 +4,7 @@ with lib; {
   imports = [ ];
   options = { vscode.enable = mkEnableOption (mdDoc "vscode"); };
   config = mkIf (config.utils.enable) {
-    home.packages = with pkgs; [ jq gh tldr ffmpeg lazygit ];
+    home.packages = with pkgs.unstable; [ vscode-fhs ];
   };
 }
 
