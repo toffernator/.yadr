@@ -2,17 +2,12 @@
 
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/github_ed25519
-
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
-    ${pkgs.swww}/bin/swww image ~/.yadr/backgrounds/wallhalla-17-1920x1080.jpg
+    ${pkgs.swww}/bin/swww img /home/toffer/.yadr/backgrounds/wallhalla-17-1920x1080.jpg
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator & disown
     ${pkgs.pyprland}/bin/pypr &
   '';
-  # TODO: 
-  # ${pkgs.polkit-kde-agent}/bin/polk
   dotfilesDir =
     config.lib.file.mkOutOfStoreSymlink "/home/toffer/.yadr/dotfiles";
 in with lib; {
@@ -28,10 +23,14 @@ in with lib; {
           "LIBVA_DRIVER_NAME,nvidia"
           "XDG_SESSION_TYPE,wayland"
           "WLR_NO_HARDWARE_CURSORS,1"
+          "NIXOS_OZONE_WL,1"
         ];
 
-        exec-once =
-          [ "${startupScript}/bin/start" "${pkgs.alacritty}/bin/alacritty" ];
+        exec-once = [
+          "${startupScript}/bin/start"
+          "${pkgs.alacritty}/bin/alacritty"
+          "lxqt-policykit-agent"
+        ];
 
         "$mod" = "SUPER";
 
@@ -96,6 +95,11 @@ in with lib; {
         ];
 
         decoration.rounding = 5;
+
+        input.touchpad = {
+          natural_scroll = true;
+          clickfinger_behavior = true;
+        };
 
         windowrule = [ "workspace 1, alacritty" "workspace 2, firefox" ];
       };

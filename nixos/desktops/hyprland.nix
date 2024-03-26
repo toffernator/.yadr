@@ -21,6 +21,7 @@ with lib; {
     environment.variables.NIXOS_OZONE_WL = "1";
 
     environment.systemPackages = with pkgs; [
+      lxqt.lxqt-policykit
       waybar
       swww
       dunst
