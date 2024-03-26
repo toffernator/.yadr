@@ -10,6 +10,9 @@ let
     # Git
     gh
     lazygit
+
+    # Apps
+    firefox
   ];
 in {
   imports = [ ];

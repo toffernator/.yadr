@@ -6,13 +6,18 @@ let
     ffmpeg
 
     # Social
-    signal-dekstop
+    signal-desktop
 
     # Uni
     zotero
     ghc
     cabal-install
     agda
+
+    # Apps
+    chromium
+    alacritty
+    tmux
   ];
   packagesUnstable = with pkgs.unstable; [ vscode-fhs ];
 in {

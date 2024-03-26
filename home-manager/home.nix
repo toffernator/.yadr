@@ -10,12 +10,10 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./parts/media.nix
-    ./parts/social.nix
-    ./parts/uni.nix
-    ./parts/utils.nix
-    ./parts/nvim.nix
-    ./hyprland.nix
+    ./parts/editors/nvim.nix
+    ./parts/desktops/hyprland.nix
+    ./hosts/common/packages.nix
+    ./hosts/laptop/packages.nix
   ];
 
   nixpkgs = {
@@ -50,14 +48,6 @@
     homeDirectory = "/home/toffer";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
-  home.packages = with pkgs; [ chromium firefox alacritty tmux ];
-
-  social.enable = true;
-  utils.enable = true;
-  uni.enable = true;
   neovim.enable = true;
   hyprland.enable = true;
 
