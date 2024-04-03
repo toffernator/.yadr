@@ -158,8 +158,6 @@
       wireplumber
       pulseaudio
     ];
-
-    shellAliases = { todo = ''$EDITOR "$HOME"/.todo''; };
   };
 
   fonts.packages = with pkgs; [

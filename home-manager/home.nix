@@ -12,6 +12,7 @@
     # You can also split up your configuration and import pieces of it here:
     ./parts/editors/nvim.nix
     ./parts/desktops/hyprland.nix
+    ./parts/utilities/bat.nix
     ./hosts/common/packages.nix
     ./hosts/laptop/packages.nix
   ];
@@ -50,9 +51,13 @@
 
   neovim.enable = true;
   hyprland.enable = true;
+  bat.enable = true;
 
   # Enable home-manager, bash, and git
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    shellAliases = { todo = ''$EDITOR "$HOME"/.todo''; };
+  };
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
