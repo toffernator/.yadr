@@ -12,16 +12,26 @@ let
     zotero
     ghc
     cabal-install
-    agda
+    anki-bin
 
     # Apps
     chromium
     alacritty
     tmux
   ];
-  packagesUnstable = with pkgs.unstable; [ vscode-fhs ];
+  packagesUnstable = with pkgs.unstable; [
+    # Uni
+    emacs-gtk
+    (agda.withPackages (agdaPkgs: [ agdaPkgs.standard-library ]))
+    # TODO:
+    # agda-mode setup
+    # echo "standard-library" > ~/.agda/defaults
+  ];
 in {
-  imports = [ ];
-  config = { home.packages = packages ++ packagesUnstable; };
+  imports = [ ../../parts/utilities/zoxide.nix ];
+  config = {
+    home.packages = packages ++ packagesUnstable;
+    zoxide.enable = true;
+  };
 }
 

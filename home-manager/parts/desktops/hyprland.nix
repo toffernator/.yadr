@@ -22,12 +22,7 @@ in with lib; {
 
   };
   config = mkIf (config.hyprland.enable) {
-    home.sessionVariables = {
-      LIBVA_DRIVER_NAME = "nvidia";
-      XDG_SESSION_TYPE = "wayland";
-      WLR_NO_HARDWARE_CURSORS = "1";
-      NIXOS_OZONE_WL = "1";
-    };
+    home.sessionVariables = { };
 
     home.packages = with pkgs; [
       lxqt.lxqt-policykit
@@ -44,6 +39,14 @@ in with lib; {
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
+        env = [
+          # For some reason these can't be in home.sessionVariables
+          "LIBVA_DRIVER_NAME,nvidia"
+          "XDG_SESSION_TYPE,wayland"
+          "WLR_NO_HARDWARE_CURSORS,1"
+          "NIXOS_OZONE_WL,1"
+        ];
+
         exec-once = [
           "${startupScript}/bin/start"
           "${pkgs.alacritty}/bin/alacritty"

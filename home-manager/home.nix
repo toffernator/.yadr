@@ -51,7 +51,8 @@
   neovim.enable = true;
   hyprland.enable = true;
 
-  # Enable home-manager and git
+  # Enable home-manager, bash, and git
+  programs.bash.enable = true;
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
