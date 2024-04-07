@@ -13,7 +13,7 @@ in {
     };
   };
   config = mkIf (config.neovim.enable) {
-    home.packages = with pkgs; [
+    home.packages = with pkgs.unstable; [
       neovim
 
       # For language servers and neovim plugin

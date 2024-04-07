@@ -22,8 +22,6 @@ in with lib; {
 
   };
   config = mkIf (config.hyprland.enable) {
-    home.sessionVariables = { };
-
     home.packages = with pkgs; [
       lxqt.lxqt-policykit
       waybar
@@ -41,10 +39,12 @@ in with lib; {
       settings = {
         env = [
           # For some reason these can't be in home.sessionVariables
-          "LIBVA_DRIVER_NAME,nvidia"
+          # https://discourse.nixos.org/t/hyprland-mouse-cursor-doesnt-show-on-external-display/38371
+          # TODO: Lol I think there was a type in WLR so might want to test again...
+          "IBVA_DRIVER_NAME,nvidia"
           "XDG_SESSION_TYPE,wayland"
           "WLR_NO_HARDWARE_CURSORS,1"
-          "NIXOS_OZONE_WL,1"
+          "NIXOS_OZONE_W,1"
         ];
 
         exec-once = [

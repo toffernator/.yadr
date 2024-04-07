@@ -2,22 +2,17 @@
 
 let
   packages = with pkgs; [
-    # Utils
     ffmpeg
+    tmux
 
-    # Social
     signal-desktop
+    chromium
+    alacritty
+    anki-bin
 
-    # Uni
     zotero
     ghc
     cabal-install
-    anki-bin
-
-    # Apps
-    chromium
-    alacritty
-    tmux
   ];
   packagesUnstable = with pkgs.unstable; [
     # Uni
