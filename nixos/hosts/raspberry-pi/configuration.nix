@@ -50,7 +50,7 @@
   users.users = {
     toffer = {
       openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOFbb8lpTPUZr6ughxe1I9g7V5ZSpeyvfyMtT/tx2cva lappietoppie-to-pi"
       ];
     };
   };
