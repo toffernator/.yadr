@@ -93,4 +93,37 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
   programs = { dconf.enable = true; };
+
+  environment.systemPackages = with pkgs; [
+    wl-clipboard
+    alsa-utils
+    pipewire
+    wireplumber
+    pulseaudio
+  ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      # Import your home-manager configuration
+      toffer = import ../home-manager/home.nix;
+    };
+  };
+
+  users.users = {
+    toffer = {
+      isNormalUser = true;
+      extraGroups = [
+        "wheel"
+        "video"
+        "audio"
+        "camera"
+        "networkmanager"
+        "lp"
+        "scanner"
+        "input" # for waybar
+      ];
+    };
+  };
 }
+

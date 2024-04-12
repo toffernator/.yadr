@@ -34,6 +34,7 @@
     enableRedistributableFirmware = true;
     firmware = [ pkgs.wireless-regdb ];
   };
+
   networking = {
     useDHCP = false;
     interfaces.wlan0.useDHCP = true;
@@ -46,5 +47,11 @@
     '';
   };
 
-  system = { stateVersion = "23.11"; };
+  users.users = {
+    toffer = {
+      openssh.authorizedKeys.keys = [
+        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+      ];
+    };
+  };
 }

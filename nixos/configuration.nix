@@ -113,7 +113,6 @@
       ];
     };
   };
-
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
@@ -128,28 +127,14 @@
   environment = {
     variables = {
       TERMINAL = "alacritty";
-      EDITOR = "nvim";
-      VISUAL = "nvim";
+      EDITOR = "vim";
+      VISUAL = "vim";
     };
 
-    systemPackages = with pkgs; [
-      coreutils
-      git
-      wget
-      zip
-      unzip
-      wl-clipboard
-      vim
-
-      alsa-utils
-      pipewire
-      wireplumber
-      pulseaudio
-    ];
+    systemPackages = with pkgs; [ coreutils git wget zip unzip vim ];
   };
 
   fonts.packages = with pkgs; [
-    # Fonts
     carlito # NixOS
     vegur # NixOS
     jetbrains-mono
@@ -157,14 +142,6 @@
     corefonts # Microsoft Fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    users = {
-      # Import your home-manager configuration
-      toffer = import ../home-manager/home.nix;
-    };
-  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
