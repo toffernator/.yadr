@@ -69,7 +69,7 @@
         };
         pi = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./nixos/configuration.nix ./nixos.hosts/raspberry-pi ];
+          modules = [ ./nixos/configuration.nix ./nixos/hosts/raspberry-pi ];
         };
       };
     };
