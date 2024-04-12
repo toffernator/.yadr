@@ -67,6 +67,10 @@
             ./nixos/hosts/laptop
           ];
         };
+        pi = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./nixos.hosts/raspberry-pi ];
+        };
       };
     };
 }
