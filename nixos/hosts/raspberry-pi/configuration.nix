@@ -29,23 +29,23 @@
 
   # Apparently WiFi is broken on Raspberry Pi 3B+, I have a 3B but leaving this
   # here just in case
-  systemd.services.iwd.serviceConfig.Restart = "always";
-  hardware = {
-    enableRedistributableFirmware = true;
-    firmware = [ pkgs.wireless-regdb ];
-  };
-
-  networking = {
-    useDHCP = false;
-    interfaces.wlan0.useDHCP = true;
-    networkmanager.wifi.backend = "iwd";
-    wireless.iwd.enable = true;
-  };
-  boot = {
-    extraModprobeConfig = ''
-      options cfg80211 ieee80211_regdom="US"
-    '';
-  };
+  #   systemd.services.iwd.serviceConfig.Restart = "always";
+  #   hardware = {
+  #     enableRedistributableFirmware = true;
+  #     firmware = [ pkgs.wireless-regdb ];
+  #   };
+  # 
+  #   networking = {
+  #     useDHCP = false;
+  #     interfaces.wlan0.useDHCP = true;
+  #     networkmanager.wifi.backend = "iwd";
+  #     wireless.iwd.enable = true;
+  #   };
+  #   boot = {
+  #     extraModprobeConfig = ''
+  #       options cfg80211 ieee80211_regdom="US"
+  #     '';
+  #   };
 
   users.users = {
     toffer = {

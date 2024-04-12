@@ -112,7 +112,6 @@
 
   users.users = {
     toffer = {
-      isNormalUser = true;
       extraGroups = [
         "wheel"
         "video"
