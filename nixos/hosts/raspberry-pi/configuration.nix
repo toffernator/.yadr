@@ -6,7 +6,7 @@
 
   # On other boards, pick a different kernel, note that on most boards with good mainline support, default, latest and hardened should all work
   # Others might need a BSP kernel, which should be noted in their respective wiki entries
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_rpi3;
 
   # nixos-generate-config should normally set up file systems correctly
   imports = [ ./hardware-configuration.nix ];
