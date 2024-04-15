@@ -4,9 +4,9 @@ let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
-    ${pkgs.swww}/bin/swww img /home/toffer/.yadr/backgrounds/wallhalla-17-1920x1080.jpg
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator & disown
     ${pkgs.pyprland}/bin/pypr &
+    ${pkgs.swww}/bin/swww img /home/toffer/.yadr/backgrounds/wallhalla-17-1920x1080.jpg
   '';
   dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.hyprland.dotfiles;
 in with lib; {
@@ -33,6 +33,8 @@ in with lib; {
       blueberry
       pyprland
     ];
+
+    home.sessionVariables = { SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh"; };
 
     wayland.windowManager.hyprland = {
       enable = true;
