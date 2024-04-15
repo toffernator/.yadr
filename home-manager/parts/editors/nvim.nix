@@ -13,14 +13,13 @@ in {
     };
   };
   config = mkIf (config.neovim.enable) {
-    home.packages = with pkgs.unstable; [
+    home.packages = (with pkgs; [
       neovim
 
       # For language servers and neovim plugin
       gcc
       nodejs_20
       python312
-      go
       ripgrep
       rustc
       rust-analyzer
@@ -39,7 +38,7 @@ in {
       vscode-langservers-extracted
       fd
       nixfmt
-    ];
+    ]) ++ (with pkgs.unstable; [ go ]);
 
     home.file = {
       "nvim" = {
