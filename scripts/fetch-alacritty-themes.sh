@@ -5,17 +5,19 @@ set -o errexit
 # abort on unbound variable
 set -o nounset 
 
-rm --recursive --force ../dotfiles/alacritty/themes
+THEMES_DIR="../dotfiles/alacritty/themes"
 
-mkdir -p ../dotfiles/alacritty/themes
-git clone --depth 1 git@github.com:alacritty/alacritty-theme.git ../dotfiles/alacritty/themes
+rm --recursive --force ${THEMES_DIR}
 
-rm --recursive --force ../dotfiles/alacritty/themes/.git images
-rm --force ../dotfiles/alacritty/themes/README.md print_colors.sh
+mkdir -p ${THEMES_DIR}
+git clone --depth 1 git@github.com:alacritty/alacritty-theme.git ${THEMES_DIR}
 
-mv ../dotfiles/alacritty/themes/themes/* ../dotfiles/alacritty/themes
-rm --recursive ../dotfiles/alacritty/themes/themes
+rm --recursive --force ${THEMES_DIR}/.git ${THEMES_DIR}/images
+rm --force ${THEMES_DIR}/README.md ${THEMES_DIR}/print_colors.sh
 
-git add ../dotfiles/alacritty/themes
+mv ${THEMES_DIR}/themes/* ${THEMES_DIR}
+rm --recursive ${THEMES_DIR}/themes
+
+git add ${THEMES_DIR}
 git commit --message "chore: Run scripts/fetch-alacritty-themes.sh"
 
