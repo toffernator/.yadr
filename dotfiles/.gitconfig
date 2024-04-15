@@ -10,7 +10,8 @@
 	required = true
 [alias]
 	ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi"
-	a = add
+  a = add
+  ap = add -p
 	s = status
 	st = status
 	ci = commit

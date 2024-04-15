@@ -10,9 +10,11 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./parts/editors/nvim.nix
     ./parts/desktops/hyprland.nix
+    ./parts/programs/alacritty.nix
+    ./parts/editors/nvim.nix
     ./parts/utilities/bat.nix
+    ./parts/utilities/git.nix
     ./hosts/common/packages.nix
     ./hosts/laptop/packages.nix
   ];
@@ -49,17 +51,18 @@
     homeDirectory = "/home/toffer";
   };
 
-  neovim.enable = true;
-  hyprland.enable = true;
-  bat.enable = true;
-
   # Enable home-manager, bash, and git
   programs.bash = {
     enable = true;
     shellAliases = { todo = ''$EDITOR "$HOME"/.todo''; };
   };
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+
+  hyprland.enable = true;
+  alacritty.enable = true;
+  neovim.enable = true;
+  git.enable = true;
+  bat.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
