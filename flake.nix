@@ -61,9 +61,8 @@
         laptop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
-            # > Our main nixos configuration file <
+            ./operating-systems/configuration.nix
             ./operating-systems/nixos/configuration.nix
-
             ./operating-systems/nixos/hosts/laptop
           ];
         };
