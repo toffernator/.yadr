@@ -1,6 +1,6 @@
-{ inputs, outputs, lib, config, pkgs, ... }:  {
-    # You can import other darwin modules here
-    imports = [
+{ inputs, outputs, lib, config, pkgs, ... }: {
+  # You can import other darwin modules here
+  imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
 
@@ -25,8 +25,8 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-    nixpkgs = {
-      hostPlatform = "x86_64-darwin";
+  nixpkgs = {
+    hostPlatform = "x86_64-darwin";
     # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
@@ -88,14 +88,32 @@
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
   };
- 
+
   homebrew = {
     enable = true;
- 
-    casks = [
+
+    casks = [ ];
+  };
+
+  security.pam.enableSudoTouchIdAuth = true;
+
+  system.defaults = {
+    dock.autohide = true;
+    dock.mru-spaces = false;
+    finder.AppleShowAllExtensions = true;
+    finder.FXPreferredViewStyle = "clmv";
+    screencapture.location = "~/Pictures/screenshots";
+    screensaver.askForPasswordDelay = 10;
+  };
+
+  fonts = { # Fonts
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      font-awesome
+      corefonts # Microsoft Fonts
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
   };
 
-  # TODO: I think home-manager needs to deal enable .zsh to auto-load the new env of packages. That and split up your home.nix.
-  # This will need dotnet@7, nvim, aws, docker-desktop, Rider, Webstorm, Vscodium, a mac tiling wm.
 }
+
