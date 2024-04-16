@@ -11,6 +11,7 @@
     # ./users.nix
   ];
 
+  # TODO: move to hosts/macbook
   networking = {
     computerName = "Christoffers-Macbook-Pro";
     hostName = "Christoffers-MacBook-Pro";
@@ -25,76 +26,13 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-  nixpkgs = {
-    hostPlatform = "x86_64-darwin";
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
-  };
-
-  # This will add each flake input as a registry
-  # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: { inherit flake; }))
-    ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-
-  nix = {
-    # Nix Package Manager Settings
-    gc = {
-      # Garbage Collection
-      automatic = true;
-      # dates = "weekly";
-      options = "--delete-older-than 2d";
-    };
-    package = pkgs.nixVersions.unstable; # Enable Flakes
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs          = true
-      keep-derivations      = true
-    '';
-  };
+  nixpkgs = { hostPlatform = "x86_64-darwin"; };
 
   programs.zsh.enable = true;
 
-  # This will additionally add your inputs to the system's legacy channels
-  # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = [ "/etc/nix/path" ];
-  environment.etc = lib.mapAttrs' (name: value: {
-    name = "nix/path/${name}";
-    value.source = value.flake;
-  }) config.nix.registry;
+  homebrew = { enable = true; };
 
-  nix.settings = {
-    # Enable flakes and new 'nix' command
-    experimental-features = "nix-command flakes";
-    # Deduplicate and optimize nix store
-    auto-optimise-store = true;
-  };
-
-  homebrew = {
-    enable = true;
-
-    casks = [ ];
-  };
-
+  # TODO: move to hosts/macbook.nix
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {

@@ -76,7 +76,8 @@
         Christoffers-MacBook-Pro = darwin.lib.darwinSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
-            ./darwin/configuration.nix
+            ./operating-systems/configuration.nix
+            ./operating-systems/darwin/configuration.nix
 
             home-manager.darwinModules.home-manager
             {
@@ -88,8 +89,8 @@
               # arguments to home.nix
               home-manager.extraSpecialArgs = { inherit inputs outputs; };
             }
-        ];
-	      };
+          ];
+        };
       };
     };
 }
