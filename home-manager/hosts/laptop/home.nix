@@ -10,10 +10,8 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./parts/programs/alacritty.nix
-    ./parts/editors/nvim.nix
-    ./parts/utilities/bat.nix
-    ./parts/utilities/git.nix
+    ../../parts/desktops/hyprland.nix
+    ../../parts/utilitie/zoxide.nix
   ];
 
   programs.home-manager.enable = true;
@@ -31,10 +29,8 @@
     firefox
   ];
 
-  alacritty.enable = true;
-  neovim.enable = true;
-  git.enable = true;
-  bat.enable = true;
+  hyprland.enable = true;
+  zoxide.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
