@@ -64,12 +64,11 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./operating-systems/configuration.nix
-            ./operating-systems/nixos/configuration.nix
-            ./operating-systems/nixos/hosts/laptop
-          ];
+          specialArgs = {
+            inherit inputs outputs;
+            vars = { machine = "laptop"; };
+          };
+          modules = [ ./system/machines/laptop ];
         };
       };
       darwinConfigurations = {

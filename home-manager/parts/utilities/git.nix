@@ -17,7 +17,7 @@ in {
       enable = true;
       delta = {
         enable = true;
-        package = pkgs.unstable.delta;
+        package = pkgs.delta;
       };
 
     };

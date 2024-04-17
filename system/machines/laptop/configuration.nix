@@ -1,6 +1,6 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, vars, lib, config, pkgs, ... }: {
 
-  imports = [ ../../desktops ];
+  imports = [ ../../common.nix ../../nixos.nix ../../parts/desktops ];
 
   networking.hostName = "lappietoppie";
 
@@ -93,4 +93,5 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
   programs = { dconf.enable = true; };
+
 }

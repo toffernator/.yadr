@@ -1,6 +1,8 @@
 # This configuration is shared across all nixos hosts.
 
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, vars, lib, config, pkgs, ... }:
+
+{
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -14,8 +16,8 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     # TODO: Move into individual hosts that want virtualization
-    ./virtualization/docker.nix
-    ./virtualization/virt-manager.nix
+    ./parts/virtualization/docker.nix
+    ./parts/virtualization/virt-manager.nix
   ];
 
   time.timeZone = "Europe/Amsterdam";
@@ -111,15 +113,16 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
-  # TODO: Move to hosts/laptop/configuration.nix
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = { inherit inputs outputs vars; };
     users = {
       # Import your home-manager configuration
+      # the below "just" imports the nix expression from home.nix
       toffer = import ../home-manager/home.nix;
     };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
+
 }

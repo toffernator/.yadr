@@ -4,7 +4,7 @@ with lib; {
   imports = [ ];
   options = { zoxide.enable = mkEnableOption (mdDoc "zoxide; a smarter cd"); };
   config = mkIf (config.zoxide.enable) {
-    home.packages = with pkgs.unstable; [ fzf ];
+    home.packages = with pkgs; [ fzf ];
 
     programs.zoxide = {
       enable = true;
