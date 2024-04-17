@@ -38,7 +38,7 @@ in {
       vscode-langservers-extracted
       fd
       nixfmt
-    ]) ++ (with pkgs.unstable; [ go ]);
+    ]) ++ (with pkgs; [ go ]);
 
     home.file = {
       "nvim" = {
