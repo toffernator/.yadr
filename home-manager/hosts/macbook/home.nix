@@ -14,6 +14,10 @@
       packages = with pkgs; [ dotnet-sdk_8 ];
     };
 
+    programs.zsh = {
+      enable = true;
+      enableCompletion = true;
+    };
     alacritty.dotfiles = "/Users/toffer/.yadr/dotfiles/alacritty";
     neovim.dotfiles = "/Users/toffer/.yadr/dotfiles/nvim";
     git.dotfiles = "/Users/toffer/.yadr/dotfiles/.gitconfig";
