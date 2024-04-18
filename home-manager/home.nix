@@ -14,6 +14,7 @@
     # You can also split up your configuration and import pieces of it here:
     ./parts/programs/alacritty.nix
     ./parts/editors/nvim.nix
+    ./parts/utilities/zoxide.nix
     ./parts/utilities/bat.nix
     ./parts/utilities/git.nix
 
@@ -43,6 +44,7 @@
   neovim.enable = true;
   git.enable = true;
   bat.enable = true;
+  zoxide.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";

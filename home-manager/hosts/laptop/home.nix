@@ -33,7 +33,6 @@ in {
 
     # You can also split up your configuration and import pieces of it here:
     ../../parts/desktops/hyprland.nix
-    ../../parts/utilities/zoxide.nix
   ];
 
   config = lib.mkIf (vars.machine == "laptop") {
@@ -42,7 +41,6 @@ in {
     home.packages = packages; # ++ packagesUnstable;
 
     hyprland.enable = true;
-    zoxide.enable = true;
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     home.stateVersion = "23.05";
