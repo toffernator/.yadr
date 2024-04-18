@@ -3,7 +3,7 @@
 with lib; {
   imports = [ ];
   options = { bat.enable = mkEnableOption (mdDoc "zoxide; a smarter cd"); };
-  config = mkIf (config.zoxide.enable) {
+  config = mkIf (config.bat.enable) {
     home.packages = with pkgs; [ delta fzf ];
 
     programs.bat = {
@@ -13,6 +13,15 @@ with lib; {
     };
 
     programs.bash = {
+      shellAliases = {
+        cat = "bat";
+        diff = "batdiff --delta";
+        man = "batman";
+        grep = "batgrep";
+      };
+    };
+
+    programs.zsh = {
       shellAliases = {
         cat = "bat";
         diff = "batdiff --delta";
