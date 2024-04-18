@@ -72,12 +72,13 @@
         };
       };
       darwinConfigurations = {
-        Christoffers-MacBook-Pro = darwin.lib.darwinSystem {
-          specialArgs = { inherit inputs outputs; };
+        macbook = darwin.lib.darwinSystem {
+          specialArgs = {
+            inherit inputs outputs;
+            vars = { machine = "macbook"; };
+          };
           modules = [
-            ./operating-systems/configuration.nix
-            ./operating-systems/darwin/configuration.nix
-
+            ./system/machines/macbook.nix
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -86,7 +87,10 @@
 
               # Optionally, use home-manager.extraSpecialArgs to pass
               # arguments to home.nix
-              home-manager.extraSpecialArgs = { inherit inputs outputs; };
+              home-manager.extraSpecialArgs = {
+                inherit inputs outputs;
+                vars = { machine = "macbook"; };
+              };
             }
           ];
         };

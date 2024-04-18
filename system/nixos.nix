@@ -20,6 +20,8 @@
     ./parts/virtualization/virt-manager.nix
   ];
 
+  nix.gc.dates = "weekly";
+
   time.timeZone = "Europe/Amsterdam";
   i18n = {
     defaultLocale = "en_US.UTF-8";

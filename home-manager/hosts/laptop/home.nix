@@ -5,6 +5,7 @@
 let
   packages = with pkgs; [
     # Apps
+    firefox
     signal-desktop
     chromium
     anki-bin

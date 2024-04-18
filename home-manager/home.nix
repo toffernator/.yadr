@@ -19,6 +19,7 @@
 
     # vars.machine determines which config is mkIf'd
     ./hosts/laptop/home.nix
+    ./hosts/macbook/home.nix
   ];
 
   # Perform default configuration
@@ -35,7 +36,6 @@
     lazygit
 
     # Apps
-    firefox
     alacritty
   ];
 

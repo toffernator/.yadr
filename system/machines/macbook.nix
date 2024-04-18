@@ -9,12 +9,13 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
+    ../common.nix
+    ../darwin.nix
   ];
 
-  # TODO: move to hosts/macbook
   networking = {
-    computerName = "Christoffers-Macbook-Pro";
-    hostName = "Christoffers-MacBook-Pro";
+    computerName = "whackbook";
+    hostName = "whackbook";
   };
 
   users.users.toffer = {
@@ -30,9 +31,8 @@
 
   programs.zsh.enable = true;
 
-  homebrew = { enable = true; };
+  homebrew = { casks = [{ name = "firefox"; }]; };
 
-  # TODO: move to hosts/macbook.nix
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {

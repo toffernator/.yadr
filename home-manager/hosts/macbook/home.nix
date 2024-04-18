@@ -1,18 +1,21 @@
 # The home manager configuration specific to my macbook
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, vars, lib, config, pkgs, ... }: {
   imports = [
-    ./parts/programs/alacritty.nix
-    ./parts/editors/nvim.nix
-    ./parts/utilities/git.nix
+    ../../parts/programs/alacritty.nix
+    ../../parts/editors/nvim.nix
+    ../../parts/utilities/git.nix
   ];
-  home = {
-    username = "toffer";
-    homeDirectory = "/Users/toffer";
 
-    packages = with pkgs; [ dotnet-sdk_8 ];
+  config = lib.mkIf (vars.machine == "macbook") {
+    home = {
+      username = "toffer";
+      homeDirectory = "/Users/toffer";
+
+      packages = with pkgs; [ dotnet-sdk_8 ];
+    };
+
+    alacritty.dotfiles = "/Users/toffer/.yadr/dotfiles/alacritty";
+    neovim.dotfiles = "/Users/toffer/.yadr/dotfiles/nvim";
+    git.dotfiles = "/Users/toffer/.yadr/dotfiles/.gitconfig";
   };
-
-  alacritty.dotfiles = "Users/toffer/.yadr/dotfiles/alacritty";
-  nvim.dotfiles = "Users/toffer/.yadr/dotfiles/nvim";
-  git.dotfiles = "Useres/toffer/.yadr/dotfiles/.gitconfig";
 }

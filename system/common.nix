@@ -36,7 +36,6 @@
     gc = {
       # Garbage Collection
       automatic = true;
-      dates = "weekly";
       options = "--delete-older-than 2d";
     };
     package = pkgs.nixVersions.unstable; # Enable Flakes
@@ -59,6 +58,7 @@
     # Enable flakes and new 'nix' command
     experimental-features = "nix-command flakes";
     # Deduplicate and optimize nix store
+    # See: https://github.com/NixOS/nix/issues/7273
     auto-optimise-store = true;
   };
 }
