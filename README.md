@@ -7,3 +7,4 @@ But its not just a dotfiles repository anymore...
 
 - [ ] Fix that pkgs.unstable has disappeared from home-manager
     - [ ] Where does my pkgs input come from?
+- [ ] `Telescope document_symbols`
