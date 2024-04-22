@@ -37,6 +37,8 @@ in {
       nodePackages.prettier
       lua-language-server
       vscode-langservers-extracted
+      omnisharp-roslyn
+      dotnet-sdk_8
       fd
       nixfmt
     ]) ++ (with pkgs; [ go ]);
