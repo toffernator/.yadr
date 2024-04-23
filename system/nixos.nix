@@ -114,7 +114,7 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs vars; };
+    extraSpecialArgs = { inherit inputs outputs vars pkgs; };
     users = {
       # Import your home-manager configuration
       # the below "just" imports the nix expression from home.nix

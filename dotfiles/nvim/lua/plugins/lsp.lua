@@ -33,7 +33,7 @@ return {
                 }
             })
             -- All the language servers with default configs
-            lsp.setup_servers({ "pyright", "tailwindcss", "html", "gopls", "nil_ls", "astro", "gopls" })
+            lsp.setup_servers({ "pyright", "tailwindcss", "html", "gopls", "nil_ls", "astro", "gopls", "rust_analyzer" })
 
             -- Auto-compleition
             local cmp = require('cmp')

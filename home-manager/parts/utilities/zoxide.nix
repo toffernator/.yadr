@@ -12,6 +12,7 @@ with lib; {
     };
 
     programs.bash = {
+      enable = true;
       # bashrcExtra = ''eval "$(zoxide init bash)"'';
       shellAliases = {
         cd = "z";

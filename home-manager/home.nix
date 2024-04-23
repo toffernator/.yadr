@@ -39,6 +39,8 @@
     alacritty
   ];
 
+  programs.bash.enable = true;
+
   alacritty.enable = true;
   neovim.enable = true;
   git.enable = true;

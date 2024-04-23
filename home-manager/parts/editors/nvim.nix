@@ -23,6 +23,7 @@ in {
       ripgrep
       rustc
       rust-analyzer
+      cargo
       haskell-language-server
       nil
       nodePackages_latest.typescript-language-server
