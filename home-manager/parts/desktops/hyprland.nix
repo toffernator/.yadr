@@ -2,11 +2,11 @@
 
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    ${pkgs.swww}/bin/swww img /home/toffer/.yadr/backgrounds/wallhalla-17-1920x1080.jpg
     ${pkgs.waybar}/bin/waybar &
-    ${pkgs.swww}/bin/swww init &
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator & disown
     ${pkgs.pyprland}/bin/pypr &
-    ${pkgs.swww}/bin/swww img /home/toffer/.yadr/backgrounds/wallhalla-17-1920x1080.jpg
+    ${pkgs.swww}/bin/swww init &
   '';
   dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.hyprland.dotfiles;
 in with lib; {
