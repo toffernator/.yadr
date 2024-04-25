@@ -35,6 +35,9 @@ in with lib; {
     ];
 
     home.sessionVariables = { SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh"; };
+    programs.bash.profileExtra = ''
+      Hyprland
+    '';
 
     wayland.windowManager.hyprland = {
       enable = true;
