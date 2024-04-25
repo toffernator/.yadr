@@ -34,7 +34,13 @@ in with lib; {
       pyprland
     ];
 
-    home.sessionVariables = { SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh"; };
+    home.sessionVariables = {
+      SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
+      IBVA_DRIVER_NAME = "nvidia";
+      XDG_SESSION_TYPE = "wayland";
+      WLR_NO_HARDWARE_CURSORS = "1";
+      NIXOS_OZONE_W = "1";
+    };
     programs.bash.profileExtra = ''
       Hyprland
     '';
@@ -42,16 +48,6 @@ in with lib; {
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
-        env = [
-          # For some reason these can't be in home.sessionVariables
-          # https://discourse.nixos.org/t/hyprland-mouse-cursor-doesnt-show-on-external-display/38371
-          # TODO: Lol I think there was a type in WLR so might want to test again...
-          "IBVA_DRIVER_NAME,nvidia"
-          "XDG_SESSION_TYPE,wayland"
-          "WLR_NO_HARDWARE_CURSORS,1"
-          "NIXOS_OZONE_W,1"
-        ];
-
         exec-once = [
           "${startupScript}/bin/start"
           "${pkgs.alacritty}/bin/alacritty"
