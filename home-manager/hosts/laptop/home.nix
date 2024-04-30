@@ -13,14 +13,6 @@ let
     ghc
     cabal-install
   ];
-  #packagesUnstable = with pkgs.unstable; [
-  # Uni
-  #emacs-gtk
-  #(agda.withPackages (agdaPkgs: [ agdaPkgs.standard-library ]))
-  # TODO:
-  # agda-mode setup
-  # echo "standard-library" > ~/.agda/defaults
-  # ];
 in {
   # You can import other home-manager modules here
   imports = [
