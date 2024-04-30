@@ -2,15 +2,12 @@
   description = "Your new nix config";
 
   inputs = {
-    # Nixpkgs
+    # Unstable just means rolling
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-23.11";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
+    # Also see the 'stable-packages' overlay at 'overlays/default.nix'.
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     darwin = {
@@ -18,41 +15,33 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
     hyprland.url = "github:hyprwm/Hyprland";
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
+    # TODO: Consider:
+    # hardware.url = "github:nixos/nixos-hardware";
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
     let
       inherit (self) outputs;
-      # Supported systems for your flake packages, shell, etc.
-      systems = [
+      supported-systems = [
         "aarch64-linux"
         "i686-linux"
         "x86_64-linux"
         "aarch64-darwin"
         "x86_64-darwin"
       ];
-      # This is a function that generates an attribute by calling a function you
-      # pass to it, with each system as an argument
-      forAllSystems = nixpkgs.lib.genAttrs systems;
+
+      forAllSystems = nixpkgs.lib.genAttrs supported-systems;
     in {
-      # Your custom packages
-      # Accessible through 'nix build', 'nix shell', etc
       packages =
         forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      # Formatter for your nix files, available through 'nix fmt'
-      # Other options beside 'nixpkgs-fmt' include 'alejandra'
+
       formatter =
         forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
 
-      # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
+
       # Reusable nixos modules you might want to export
       # These are usually stuff you would upstream into nixpkgs
       nixosModules = import ./modules/nixos;
