@@ -72,7 +72,7 @@
         };
       };
       darwinConfigurations = {
-        Christoffers-MacBook-Pro = darwin.lib.darwinSystem {
+        macbook = darwin.lib.darwinSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./operating-systems/configuration.nix
