@@ -60,23 +60,21 @@
       # These are usually stuff you would upstream into home-manager
       homeManagerModules = import ./modules/home-manager;
 
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
             vars = { machine = "laptop"; };
           };
-          modules = [ ./system/machines/laptop ];
+          modules = [ ./system/machine/laptop ];
         };
       };
       darwinConfigurations = {
         macbook = darwin.lib.darwinSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
-            ./operating-systems/configuration.nix
-            ./operating-systems/darwin/configuration.nix
+            ./system/darwin.nix
+            ./system/machine/configuration.nix
 
             home-manager.darwinModules.home-manager
             {
