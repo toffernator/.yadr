@@ -16,8 +16,11 @@
     # NVidia doesn't always play nice with linuxPackages_latest
     # https://discourse.nixos.org/t/nvidia-fails-to-build/34392/3
     #
-    # Using longterm version from https://kernel.org/
-    kernelPackages = pkgs.linuxPackages_6_1;
+    # Use the longterm version from https://kernel.org/, for which you can find
+    # find the corresponding package with:
+    # $ nix repl
+    # nix-repl> pkgs.linux_Packages_<TAB>
+    kernelPackages = pkgs.linuxPackages_6_8;
   };
 
   systemd.tmpfiles.rules = [
@@ -68,6 +71,8 @@
       };
     };
   };
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Necessary for pipewire
   hardware.pulseaudio.enable = false;
@@ -77,7 +82,7 @@
       enable = true;
     };
     pipewire = {
-      # Sound
+      # For sound
       enable = true;
       alsa = {
         enable = true;
@@ -89,9 +94,26 @@
     flatpak.enable = true;
   };
 
+  users.users = {
+    toffer = {
+      extraGroups = [
+        "wheel"
+        "video"
+        "audio"
+        "camera"
+        "networkmanager"
+        "lp"
+        "scanner"
+        "input" # for waybar
+      ];
+    };
+  };
+
   hyprland.enable = true;
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
-  programs = { dconf.enable = true; };
+  programs = {
+    # TODO: Understand if this needs to be here or move it. And document why if
+    # it does.
+    dconf.enable = true;
+  };
 
 }

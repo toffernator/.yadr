@@ -34,12 +34,10 @@ return {
         end
     end,
     keys = {
-        { "<leader>sf",  "<cmd>Telescope find_files hidden=true<cr>",    desc = "Search files" },
-        { "<leader>ss",  "<cmd>Telescope grep_string<cr>",               desc = "Search string" },
-        { "<leader>ss",  "<cmd>Telescope live_grep<cr>",                 desc = "Search live grep" },
-        { "<leader>s/",  "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Search pattern" },
-        { "<leader>gsc", "<cmd>Telescope git_commits<cr>",               desc = "Search git commits" },
-        { "<leader>Csp", "<cmd>Telescope lazy<cr>",                      desc = "Search plugins" },
+        { "<leader>sf",  "<cmd>Telescope find_files hidden=true<cr>", desc = "Search files" },
+        { "<leader>s/",  "<cmd>Telescope grep_string<cr>",            desc = "Search string" },
+        { "<leader>ss",  "<cmd>Telescope live_grep<cr>",              desc = "Search live grep" },
+        { "<leader>gsc", "<cmd>Telescope git_commits<cr>",            desc = "Search git commits" },
     },
     cmd = { "Telescope" },
     dependencies = {

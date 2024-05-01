@@ -37,24 +37,7 @@
     supportedLocales = [ "en_US.UTF-8/UTF-8" "nl_NL.UTF-8/UTF-8" ];
   };
 
-  users.users = {
-    toffer = {
-      isNormalUser = true;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-      ];
-      extraGroups = [
-        "wheel"
-        "video"
-        "audio"
-        "camera"
-        "networkmanager"
-        "lp"
-        "scanner"
-        "input" # for waybar
-      ];
-    };
-  };
+  users.users = { toffer = { isNormalUser = true; }; };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
