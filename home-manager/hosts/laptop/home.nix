@@ -6,7 +6,6 @@ let
   packages = with pkgs; [
     # Apps
     signal-desktop
-    chromium
     anki-bin
 
     zotero
