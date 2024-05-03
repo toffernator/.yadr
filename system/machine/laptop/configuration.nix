@@ -109,6 +109,13 @@
     };
   };
 
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    font-awesome
+    corefonts # Microsoft Fonts
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
+
   hyprland.enable = true;
   programs = {
     # TODO: Understand if this needs to be here or move it. And document why if

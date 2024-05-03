@@ -86,14 +86,8 @@
   };
 
   fonts.packages = with pkgs; [
-    # Fonts
     carlito # NixOS
     vegur # NixOS
-    # TODO: Move to hosts/laptop/configuration.nix
-    jetbrains-mono
-    font-awesome
-    corefonts # Microsoft Fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   home-manager = {
