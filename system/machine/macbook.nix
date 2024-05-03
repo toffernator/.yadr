@@ -12,8 +12,8 @@
   ];
 
   networking = {
-    computerName = "Christoffers-Macbook-Pro";
-    hostName = "Christoffers-MacBook-Pro";
+    computerName = "whackbook";
+    hostName = "whackbook";
   };
 
   users.users.toffer = {
