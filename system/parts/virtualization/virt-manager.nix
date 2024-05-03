@@ -5,5 +5,5 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  # TODO: run on install `virsh net-start default`
+  # TODO: run on install `virsh net-autostart default`
 }

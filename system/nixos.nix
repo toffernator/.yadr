@@ -15,9 +15,6 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-    # TODO: Move into individual hosts that want virtualization
-    ./parts/virtualization/docker.nix
-    ./parts/virtualization/virt-manager.nix
   ];
 
   time.timeZone = "Europe/Amsterdam";

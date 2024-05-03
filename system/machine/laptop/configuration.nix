@@ -1,6 +1,13 @@
 { inputs, outputs, vars, lib, config, pkgs, ... }: {
 
-  imports = [ ../../common.nix ../../nixos.nix ../../parts/desktops ];
+  imports = [
+    ../../common.nix
+    ../../nixos.nix
+
+    ../../parts/desktops
+    ../../parts/virtualization/docker.nix
+    ../../parts/virtualization/virt-manager.nix
+  ];
 
   networking.hostName = "lappietoppie";
 
@@ -24,6 +31,7 @@
   };
 
   systemd.tmpfiles.rules = [
+    # TODO: Figure out what this does and if it still needs to be here.
     # Temporary Bluetooth Fix
     "d /var/lib/bluetooth 700 root root - -"
   ];
@@ -105,6 +113,7 @@
         "lp"
         "scanner"
         "input" # for waybar
+        "libvirtd" # for virt-manager
       ];
     };
   };
@@ -117,10 +126,4 @@
   ];
 
   hyprland.enable = true;
-  programs = {
-    # TODO: Understand if this needs to be here or move it. And document why if
-    # it does.
-    dconf.enable = true;
-  };
-
 }
