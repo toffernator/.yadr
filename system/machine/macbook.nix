@@ -29,8 +29,6 @@
 
   programs.zsh.enable = true;
 
-  homebrew = { enable = true; };
-
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {
