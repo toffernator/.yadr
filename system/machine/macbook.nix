@@ -11,7 +11,6 @@
     # ./users.nix
   ];
 
-  # TODO: move to hosts/macbook
   networking = {
     computerName = "Christoffers-Macbook-Pro";
     hostName = "Christoffers-MacBook-Pro";
@@ -32,7 +31,6 @@
 
   homebrew = { enable = true; };
 
-  # TODO: move to hosts/macbook.nix
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {
