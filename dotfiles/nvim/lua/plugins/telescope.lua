@@ -11,14 +11,14 @@ return {
         { 'nvim-telescope/telescope-ui-select.nvim' },
         { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
         { "tsakirist/telescope-lazy.nvim" },
-        { "ghassan0/telescope-glyph.nvim" },
-        { "xiyaowong/telescope-emoji.nvim" },
-        { "nvim-telescope/telescope-github.nvim" }
+        { "Snikimonkd/telescope-git-conflicts.nvim" },
     },
     event = 'VimEnter',
     tag = '0.1.x',
     config = function()
-        require('telescope').setup {
+        local telescope = require("telescope")
+
+        telescope.setup {
             defaults = {
                 file_ignore_patterns = { ".git" }
             },
@@ -26,12 +26,6 @@ return {
                 git_commits = { theme = "dropdown" },
             },
             extensions = {
-                glyph = {
-                    action = function(glyph)
-                        -- insert glyph when picked
-                        vim.api.nvim_put({ glyph.value }, 'c', false, true)
-                    end
-                },
                 ['ui-select'] = {
                     require('telescope.themes').get_dropdown(),
                 },
@@ -39,26 +33,32 @@ return {
         }
 
         -- Enable Telescope extensions if they are installed
-        local extensions = { "fzf", "ui-select", "lazy", "emoji", "glyph", "gh" }
+        local extensions = { "ui-select", "lazy", "conflicts" }
         for _, e in pairs(extensions) do
-            pcall(require("telescope").load_extension, e)
+            telescope.load_extension(e)
         end
 
         local builtin = require 'telescope.builtin'
-        vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-        vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-        vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-        vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-        vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-        vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-        vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-        vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-        vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+        vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[H]elp' })
+        vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[K]eymaps' })
+        vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[F]iles' })
+        vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'current [W]ord' })
+        vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'by [G]rep' })
+        vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[D]iagnostics' })
+        vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[R]esume' })
+        vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Recent Files ("." for repeat)' })
         vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+        vim.keymap.set('n', '<leader>gc', "<cmd>Telescope conflicts<Enter>", { desc = '[C]onflicts' })
+        vim.keymap.set('n', '<leader>sg', "<cmd>Telescope symbols<Enter>", { desc = '[G]lyphs' })
+
+        vim.keymap.set('n', '<leader>ss', function()
+            builtin.builtin { include_extensions = true }
+        end, { desc = '[S]elect telescope' })
 
         -- Shortcut for searching your Neovim configuration files
         vim.keymap.set('n', '<leader>sn', function()
             builtin.find_files { cwd = "/home/toffer/.yadr/dotfiles/nvim" }
-        end, { desc = '[S]earch [N]eovim files' })
+        end, { desc = '[N]eovim config' })
     end,
 }
