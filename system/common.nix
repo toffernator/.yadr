@@ -61,4 +61,8 @@
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
   };
+
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [ zsh ];
+  programs.zsh.enable = true;
 }

@@ -39,13 +39,7 @@
     alacritty
   ];
 
-  programs.bash = {
-    enable = true;
-    bashrcExtra = ''
-      eval $(ssh-agent) &> /dev/null
-      ssh-add $HOME/.ssh/github_ed25519 &> /dev/null
-    '';
-  };
+  programs.zsh = { enable = true; };
 
   alacritty.enable = true;
   neovim.enable = true;

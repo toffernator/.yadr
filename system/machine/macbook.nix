@@ -27,8 +27,6 @@
 
   nixpkgs = { hostPlatform = "x86_64-darwin"; };
 
-  programs.zsh.enable = true;
-
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {

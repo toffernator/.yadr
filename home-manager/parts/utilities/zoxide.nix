@@ -8,12 +8,10 @@ with lib; {
 
     programs.zoxide = {
       enable = true;
-      enableBashIntegration = true;
+      enableZshIntegration = true;
     };
 
-    programs.bash = {
-      enable = true;
-      # bashrcExtra = ''eval "$(zoxide init bash)"'';
+    programs.zsh = {
       shellAliases = {
         cd = "z";
         cdi = "zi";
