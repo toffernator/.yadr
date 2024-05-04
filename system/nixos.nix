@@ -87,15 +87,6 @@
     vegur # NixOS
   ];
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs vars pkgs; };
-    users = {
-      # Import your home-manager configuration
-      # the below "just" imports the nix expression from home.nix
-      vars.user = import ../home-manager/home.nix;
-    };
-  };
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
 

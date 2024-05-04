@@ -54,31 +54,36 @@
           specialArgs = {
             inherit inputs outputs;
             vars = {
+              os = "nixos";
               machine = "laptop";
               user = "toffer";
               homeDir = "/home/toffer";
             };
           };
-          modules =
-            [ ./system/common.nix ./system/nixos.nix ./system/machine/laptop ];
+          modules = [
+            ./system/common.nix
+            ./system/nixos.nix
+            ./system/machine/laptop
+            ./system/home.nix
+          ];
         };
       };
       darwinConfigurations = {
         macbook = darwin.lib.darwinSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = {
+            inherit inputs outputs;
+            vars = {
+              os = "darwin";
+              machine = "macbook";
+              user = "toffer";
+              homeDir = "/Users/toffer";
+            };
+          };
           modules = [
+            ./system/common.nix
+            ./system/darwin.nix
             ./system/machine/macbook.nix
-
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.toffer = import ./home-manager/home.nix;
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-              home-manager.extraSpecialArgs = { inherit inputs outputs; };
-            }
+            ./system/home.nix
           ];
         };
       };

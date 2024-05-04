@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, vars, lib, config, pkgs, ... }: {
   # You can import other darwin modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -16,9 +16,9 @@
     hostName = "whackbook";
   };
 
-  users.users.toffer = {
-    name = "toffer";
-    home = "/Users/toffer";
+  users.users."${vars.user}" = {
+    name = vars.user;
+    home = vars.homeDir;
     shell = pkgs.zsh;
   };
 
