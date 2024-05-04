@@ -92,7 +92,7 @@
     users = {
       # Import your home-manager configuration
       # the below "just" imports the nix expression from home.nix
-      toffer = import ../home-manager/home.nix;
+      vars.user = import ../home-manager/home.nix;
     };
   };
 

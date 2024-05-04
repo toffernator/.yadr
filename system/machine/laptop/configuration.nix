@@ -1,9 +1,6 @@
 { inputs, outputs, vars, lib, config, pkgs, ... }: {
 
   imports = [
-    ../../common.nix
-    ../../nixos.nix
-
     ../../parts/desktops
     ../../parts/virtualization/docker.nix
     ../../parts/virtualization/virt-manager.nix

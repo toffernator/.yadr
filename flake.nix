@@ -53,17 +53,21 @@
         laptop = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
-            vars = { machine = "laptop"; };
+            vars = {
+              machine = "laptop";
+              user = "toffer";
+              homeDir = "/home/toffer";
+            };
           };
-          modules = [ ./system/machine/laptop ];
+          modules =
+            [ ./system/common.nix ./system/nixos.nix ./system/machine/laptop ];
         };
       };
       darwinConfigurations = {
         macbook = darwin.lib.darwinSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
-            ./system/darwin.nix
-            ./system/machine/configuration.nix
+            ./system/machine/macbook.nix
 
             home-manager.darwinModules.home-manager
             {
