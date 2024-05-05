@@ -1,6 +1,6 @@
 # This is configuration shared across all opearting systems and hosts.
 
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, vars, lib, config, pkgs, ... }: {
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -59,6 +59,8 @@
     experimental-features = "nix-command flakes";
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
+    # Allow devenv to manage caches for these users
+    trusted-users = [ "root" vars.user ];
   };
 
   programs.zsh.enable = true;

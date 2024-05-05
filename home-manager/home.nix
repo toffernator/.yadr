@@ -30,6 +30,7 @@
     jq
     tldr
     ffmpeg
+    devenv
 
     # Git
     gh
