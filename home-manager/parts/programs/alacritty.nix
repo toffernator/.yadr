@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, vars, ... }:
 
 with lib;
 let dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.alacritty.dotfiles;
@@ -8,7 +8,7 @@ in {
     alacritty.enable = mkEnableOption (mdDoc "");
     alacritty.dotfiles = mkOption {
       type = types.path;
-      default = "/home/toffer/.yadr/dotfiles/alacritty";
+      default = "${vars.homeDir}/.yadr/dotfiles/alacritty";
       description = lib.mdDoc "The path to the dotfiles configuring alacritty";
     };
   };

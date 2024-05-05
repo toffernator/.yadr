@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, vars, ... }:
 
 with lib;
 let dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.git.dotfiles;
@@ -8,7 +8,7 @@ in {
     git.enable = mkEnableOption (mdDoc "");
     git.dotfiles = mkOption {
       type = types.path;
-      default = "/home/toffer/.yadr/dotfiles/.gitconfig";
+      default = "${vars.homeDir}/.yadr/dotfiles/.gitconfig";
       description = lib.mdDoc "The path to the dotfiles configuring git";
     };
   };

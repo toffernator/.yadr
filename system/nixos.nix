@@ -17,6 +17,8 @@
     # ./users.nix
   ];
 
+  nix.gc.dates = "weekly";
+
   time.timeZone = "Europe/Amsterdam";
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -34,7 +36,11 @@
     supportedLocales = [ "en_US.UTF-8/UTF-8" "nl_NL.UTF-8/UTF-8" ];
   };
 
-  users.users = { toffer = { isNormalUser = true; }; };
+  users = {
+    users = { toffer = { isNormalUser = true; }; };
+    defaultUserShell = pkgs.zsh;
+  };
+  environment.shells = with pkgs; [ zsh ];
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

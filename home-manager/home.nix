@@ -19,6 +19,7 @@
 
     # vars.machine determines which config is mkIf'd
     ./hosts/laptop/home.nix
+    ./hosts/macbook/home.nix
   ];
 
   # Perform default configuration
@@ -35,7 +36,6 @@
     lazygit
 
     # Apps
-    firefox
     alacritty
   ];
 
@@ -45,6 +45,7 @@
   neovim.enable = true;
   git.enable = true;
   bat.enable = true;
+  zoxide.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";

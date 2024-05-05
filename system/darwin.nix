@@ -1,8 +1,5 @@
 # System-level configuration shared across all darwin systems.
-{ }:
-
-{
-
+{ inputs, outputs, lib, config, pkgs, ... }: {
   # Because of programs.zsh.enableCompletion in ../home-manager/macbook.nix
   environment.pathsToLink = [ "/share/zsh" ];
 

@@ -36,7 +36,6 @@
     gc = {
       # Garbage Collection
       automatic = true;
-      dates = "weekly";
       options = "--delete-older-than 2d";
     };
     package = pkgs.nixVersions.unstable; # Enable Flakes
@@ -62,7 +61,5 @@
     auto-optimise-store = true;
   };
 
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, vars, ... }:
 
 with lib;
 let dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.neovim.dotfiles;
@@ -8,7 +8,7 @@ in {
     neovim.enable = mkEnableOption (mdDoc "neovim");
     neovim.dotfiles = mkOption {
       type = types.path;
-      default = "/home/toffer/.yadr/dotfiles/nvim";
+      default = "${vars.homeDir}/.yadr/dotfiles/nvim";
       description = lib.mdDoc "The path to the dotfiles configuring neovim";
     };
   };
