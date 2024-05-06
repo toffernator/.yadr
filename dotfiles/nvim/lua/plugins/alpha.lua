@@ -1,6 +1,50 @@
 return {
     'goolord/alpha-nvim',
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.dashboard'.config)
+    config = function()
+        local alpha = require("alpha")
+        local dashboard = require("alpha.themes.dashboard")
+
+        local logo = {
+            "        .--'''''''''--.",
+            "     .'      .---.      '.",
+            "    /    .-----------.    \\",
+            "   /        .-----.        \\",
+            "   |       .-.   .-.       |",
+            "   |      /   \\ /   \\      |",
+            "    \\    | .-. | .-. |    /",
+            "     '-._| | | | | | |_.-'",
+            "         | '-' | '-' |",
+            "          \\___/ \\___/",
+            "       _.-'  /   \\  `-._",
+            "     .' _.--|     |--._ '.",
+            "     ' _...-|     |-..._ '",
+            "            |     |",
+            "            '.___.'",
+            "              | |",
+            "             _| |_",
+            "            /\\( )/\\",
+            "           /  ` '  \\",
+            "          | |     | |",
+            "          '-'     '-'",
+            "          | |     | |",
+            "          | |     | |",
+            "          | |-----| |",
+            "       .`/  |     | |/`.",
+            "       |    |     |    |",
+            "       '._.'| .-. |'._.'",
+            "             \\ | /",
+            "             | | |",
+            "             | | |",
+            "             | | |",
+            "            /| | |\\",
+            "          .'_| | |_`.",
+            "LGB       `. | | | .'",
+            "       .    /  |  \\    .",
+            "      /o`.-'  / \\  `-.`o\"",
+            "     /o  o\\ .'   `. /o  o\"",
+            "     `.___.'       `.___.'",
+        }
+        dashboard.section.header.val = logo;
+        alpha.setup(dashboard.opts)
     end
 };
