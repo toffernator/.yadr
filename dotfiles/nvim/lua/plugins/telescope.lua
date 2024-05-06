@@ -60,7 +60,8 @@ return {
 
         -- Shortcut for searching your Neovim configuration files
         vim.keymap.set('n', '<leader>sn', function()
-            builtin.find_files { cwd = "/home/toffer/.yadr/dotfiles/nvim" }
+            local homeDir = os.getenv("HOME")
+            builtin.find_files { cwd = homeDir .. "/.yadr/dotfiles/nvim" }
         end, { desc = '[N]eovim config' })
     end,
 }
