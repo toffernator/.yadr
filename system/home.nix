@@ -8,7 +8,7 @@ in {
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs vars pkgs; };
-    users."${vars.user}" = import ../home-manager/home.nix;
+    users."${vars.user}" = import ../home-manager;
     useGlobalPkgs = true;
     useUserPackages = true;
   };
