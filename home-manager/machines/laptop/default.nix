@@ -24,7 +24,7 @@ in {
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ../../parts/desktops/hyprland.nix
+    ../../parts/desktops/sway.nix
     ../../parts/utilities/zoxide.nix
   ];
 
@@ -32,7 +32,7 @@ in {
     programs.home-manager.enable = true;
 
     home.packages = packages; # ++ packagesUnstable;
-    hyprland.enable = true;
+    sway.enable = true;
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     home.stateVersion = "23.05";

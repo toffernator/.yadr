@@ -14,17 +14,11 @@ in with lib; {
 
   };
   config = mkIf (config.sway.enable) {
+    home.packages = with pkgs; [ rofi ];
+
     wayland.windowManager.sway = {
       enable = true;
-      config = {
-        modifier = "Mod4";
-        # Use kitty as default terminal
-        terminal = "alacritty";
-        startup = [
-          # Launch Firefox on start
-          { command = "firefox"; }
-        ];
-      };
+      config = { modifier = "Mod4"; };
     };
   };
 }

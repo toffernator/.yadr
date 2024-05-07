@@ -77,7 +77,7 @@
     };
   };
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nouveau" ];
 
   # Necessary for pipewire
   hardware.pulseaudio.enable = false;
@@ -122,5 +122,13 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
-  hyprland.enable = true;
+  # FIXME: This is for Sway, not unique to laptop
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    config.common.default = "*";
+  };
+
+  networking.networkmanager.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 }
