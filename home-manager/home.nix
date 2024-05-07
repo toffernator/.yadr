@@ -18,8 +18,7 @@
     ./parts/utilities/git.nix
 
     # vars.machine determines which config is mkIf'd
-    ./machines/laptop/home.nix
-    ./machines/macbook/home.nix
+    ./machines
   ];
 
   # Perform default configuration
