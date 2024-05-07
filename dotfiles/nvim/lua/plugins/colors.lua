@@ -1,9 +1,23 @@
 return {
     {
-        "RRethy/base16-nvim",
+        "Shatur/neovim-ayu",
         lazy = false,
         config = function()
-            vim.cmd([[colorscheme base16-ayu-dark]])
+            require('ayu').setup({
+                overrides = {
+                    Normal = { bg = "None" },
+                    ColorColumn = { bg = "None" },
+                    SignColumn = { bg = "None" },
+                    Folded = { bg = "None" },
+                    FoldColumn = { bg = "None" },
+                    CursorLine = { bg = "None" },
+                    CursorColumn = { bg = "None" },
+                    WhichKeyFloat = { bg = "None" },
+                    VertSplit = { bg = "None" },
+                },
+            })
+
+            vim.cmd([[colorscheme ayu]])
         end
     },
     {
@@ -11,7 +25,6 @@ return {
         lazy = false,
         config = function()
             require("cyberdream").setup({
-                -- Recommended - see "Configuring" below for more config options
                 transparent = true,
                 italic_comments = true,
                 hide_fillchars = true,
@@ -20,7 +33,6 @@ return {
             })
         end
     },
-    { "bluz71/vim-moonfly-colors" },
-    { 'kepano/flexoki-neovim',           name = 'flexoki' },
     { "nyoom-engineering/oxocarbon.nvim" },
+    { "xiyaowong/transparent.nvim" }
 }
