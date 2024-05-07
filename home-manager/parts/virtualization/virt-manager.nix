@@ -1,4 +1,4 @@
-{ }:
+{ ... }:
 
 {
   # Maybe for this to work I need to place `programs = { dconf.enable = true; };`
