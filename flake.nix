@@ -82,7 +82,7 @@
           modules = [
             ./system/common.nix
             ./system/darwin.nix
-            ./system/machine/macbook.nix
+            ./system/machine/macbook
             ./system/home.nix
           ];
         };
