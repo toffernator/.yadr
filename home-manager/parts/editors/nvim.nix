@@ -50,6 +50,13 @@ in {
         target = ".config/nvim";
         recursive = true;
       };
+
+      "omnisharp" = {
+        enable = true;
+        source = "${vars.homeDir}/.yadr/dotfiles/omnisharp";
+        target = ".omnisharp";
+        recursive = true;
+      };
     };
   };
 }

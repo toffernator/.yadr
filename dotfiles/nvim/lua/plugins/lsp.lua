@@ -1,4 +1,9 @@
 -- Read more about lsp-zero: https://lsp-zero.netlify.app/v3.x/
+--
+--
+local map = function(keys, func, bufnr, desc)
+    vim.keymap.set("n", keys, func, { buffer = bufnr, remap = false, desc = desc })
+end
 return {
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -9,25 +14,23 @@ return {
             lsp_zero.preset("recommended") -- Can't find any documentation on what this does
             lsp_zero.extend_lspconfig()    -- Has something to do with cmp integrations
             lsp_zero.on_attach(function(_, bufnr)
-                local map = function(keys, func, desc)
-                    vim.keymap.set("n", keys, func, { buffer = bufnr, remap = false, desc = desc })
-                end
                 local telescope = require("telescope.builtin")
-                map("gd", telescope.lsp_definitions, "[D]efinition")
-                map("gr", telescope.lsp_references, "[R]eferences")
-                map("gI", telescope.lsp_implementations, "[I]mplementations")
-                map("D", telescope.lsp_type_definitions, "[D]efinition")
-                map('<leader>cs', require('telescope.builtin').lsp_document_symbols, '[S]ymbols')
-                map('<leader>cw', require('telescope.builtin').lsp_dynamic_workspace_symbols,
+                map("gd", telescope.lsp_definitions, bufnr, "[D]efinition")
+                map("gr", telescope.lsp_references, bufnr, "[R]eferences")
+                map("gI", telescope.lsp_implementations, bufnr, "[I]mplementations")
+                map("D", telescope.lsp_type_definitions, bufnr, "[D]efinition")
+                map('<leader>cs', require('telescope.builtin').lsp_document_symbols, bufnr, '[S]ymbols')
+                map('<leader>cw', require('telescope.builtin').lsp_dynamic_workspace_symbols, bufnr,
                     '[W]orkspace Symbols')
-                map('<leader>cr', vim.lsp.buf.rename, '[R]ename')
-                map('<leader>ca', vim.lsp.buf.code_action, '[A]ction')
-                map("<leader>co", function() vim.diagnostic.open_float() end, "[O]pen Float")
-                map('ch', vim.lsp.buf.hover, '[H]over')
-                map('gD', vim.lsp.buf.declaration, '[D]eclaration')
-                map("]d", function() vim.diagnostic.goto_prev() end, "Previous [D]iagnostic")
-                map("[d", function() vim.diagnostic.goto_next() end, "Next [D]iagnostic")
+                map('<leader>cr', vim.lsp.buf.rename, bufnr, '[R]ename')
+                map('<leader>ca', vim.lsp.buf.code_action, bufnr, '[A]ction')
+                map("<leader>co", function() vim.diagnostic.open_float() end, bufnr, "[O]pen Float")
+                map('ch', vim.lsp.buf.hover, bufnr, '[H]over')
+                map('gD', vim.lsp.buf.declaration, bufnr, '[D]eclaration')
+                map("]d", function() vim.diagnostic.goto_prev() end, bufnr, "Previous [D]iagnostic")
+                map("[d", function() vim.diagnostic.goto_next() end, bufnr, "Next [D]iagnostic")
             end)
+
             lsp_zero.set_preferences({
                 suggest_lsp_servers = false,
                 sign_icons = {
@@ -63,6 +66,8 @@ return {
                 virtual_text = true
             })
 
+            -- For setting up additional servers see:
+            -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
             local servers = {
                 html = {},
                 tailwindcss = {},
@@ -82,7 +87,6 @@ return {
                 rust_analyzer = {},
                 omnisharp = {
                     cmd = { "OmniSharp" },
-
                     settings = {
                         FormattingOptions = {
                             -- Enables support for reading code style, naming convention and analyzer
@@ -166,4 +170,12 @@ return {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
     { 'L3MON4D3/LuaSnip' },
+    {
+        'Hoffs/omnisharp-extended-lsp.nvim',
+        ft = 'cs',
+        config = function()
+            -- FIXME: It works, but I need it to override the keymaps when cs buffers are entered
+            vim.keymap.set("n", "gr", function() require('omnisharp_extended').telescope_lsp_definition() end)
+        end
+    }
 }
