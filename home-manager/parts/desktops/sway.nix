@@ -17,7 +17,7 @@ in with lib; {
   };
   config = mkIf (config.sway.enable) {
     home.packages = with pkgs; [
-      rofi
+      fuzzel
       swww
       networkmanagerapplet
       dunst
@@ -26,12 +26,22 @@ in with lib; {
       wl-clipboard
     ];
 
+    programs.zsh = {
+      profileExtra = "${pkgs.sway}/bin/sway";
+      initExtra = ''
+        eval $(ssh-agent) &> /dev/null
+        ssh-add $HOME/.ssh/github_ed25519 &> /dev/null
+        ssh-add $HOME/.ssh/uu_gitlab_ed25519 &> /dev/null
+        ssh-add $HOME/.ssh/pi_ed25519 &> /dev/null
+      '';
+    };
+
     wayland.windowManager.sway = {
       enable = true;
       config = {
         modifier = "Mod4";
         terminal = "alacritty";
-        menu = "rofi -show run";
+        menu = "${pkgs.fuzzel}/bin/fuzzel";
 
         startup = [
           # FIXME: This isn't working. I am not sure if nm-applet does not show because of swaybar or not. swww doesn't seem to be working very well either.
