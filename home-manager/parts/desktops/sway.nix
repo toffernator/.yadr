@@ -35,7 +35,7 @@ in with lib; {
 
         startup = [
           # FIXME: This isn't working. I am not sure if nm-applet does not show because of swaybar or not. swww doesn't seem to be working very well either.
-          # If I run swww-daemon myself then it does show the image, indicating that at least that command is being executed.
+          # Logs talk about some IconP thing not being there?
           {
             command =
               "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator & disown";
@@ -56,10 +56,11 @@ in with lib; {
         ];
 
         # TODO: Assign workspaces
-        # TODO: Screenshots
 
         keybindings = lib.mkOptionDefault {
           "${modifier}+Tab" = "workspace back_and_forth";
+          "${modifier}+Shift+P" = ''
+            exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png'';
         };
 
         window = {
