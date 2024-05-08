@@ -65,8 +65,6 @@ in with lib; {
           }
         ];
 
-        # TODO: Assign workspaces
-
         keybindings = lib.mkOptionDefault {
           "${modifier}+Tab" = "workspace back_and_forth";
           "${modifier}+Shift+P" = ''
@@ -83,6 +81,10 @@ in with lib; {
         };
         gaps = { inner = 10; };
       };
+      extraConfig = ''
+        assign [app_id="Alacritty"] workspace number 1
+        assign [app_id="firefox"] workspace number 3
+      '';
     };
   };
 }
