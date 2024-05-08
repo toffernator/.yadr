@@ -39,7 +39,13 @@
     alacritty
   ];
 
-  programs.zsh = { enable = true; };
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+    };
+  };
 
   alacritty.enable = true;
   neovim.enable = true;
