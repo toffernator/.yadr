@@ -41,9 +41,14 @@ in with lib; {
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_W = "1";
     };
-    programs.bash.profileExtra = ''
-      Hyprland
-    '';
+
+    programs.zsh = {
+      profileExtra = "Hyprland";
+      initExtra = ''
+        eval $(ssh-agent) &> /dev/null
+        ssh-add $HOME/.ssh/github_ed25519 &> /dev/null
+      '';
+    };
 
     wayland.windowManager.hyprland = {
       enable = true;

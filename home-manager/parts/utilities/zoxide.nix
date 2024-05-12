@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
-with lib; {
+let
+  shellAliases = {
+    cd = "z";
+    cdi = "zi";
+  };
+in with lib; {
   imports = [ ];
   options = { zoxide.enable = mkEnableOption (mdDoc "zoxide; a smarter cd"); };
   config = mkIf (config.zoxide.enable) {
@@ -9,16 +14,12 @@ with lib; {
     programs.zoxide = {
       enable = true;
       enableBashIntegration = true;
+      enableZshIntegration = true;
     };
 
-    programs.bash = {
-      enable = true;
-      # bashrcExtra = ''eval "$(zoxide init bash)"'';
-      shellAliases = {
-        cd = "z";
-        cdi = "zi";
-      };
-    };
+    programs.bash = { inherit shellAliases; };
+    programs.zsh = { inherit shellAliases; };
+
   };
 }
 
