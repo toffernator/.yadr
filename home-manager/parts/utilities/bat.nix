@@ -12,6 +12,15 @@ with lib; {
       config = { theme = "base16"; };
     };
 
+    programs.bash = {
+      shellAliases = {
+        cat = "bat";
+        diff = "batdiff --delta";
+        man = "batman";
+        grep = "batgrep";
+      };
+    };
+
     programs.zsh = {
       shellAliases = {
         cat = "bat";
