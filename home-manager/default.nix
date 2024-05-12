@@ -52,6 +52,12 @@
     '';
   };
 
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+  };
+
   alacritty.enable = true;
   neovim.enable = true;
   git.enable = true;
