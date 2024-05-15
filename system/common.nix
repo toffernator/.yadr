@@ -38,7 +38,7 @@
       automatic = true;
       options = "--delete-older-than 2d";
     };
-    package = pkgs.nixVersions.unstable; # Enable Flakes
+    package = pkgs.nixVersions.git; # Enable Flakes
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs          = true
