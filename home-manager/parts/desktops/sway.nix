@@ -83,7 +83,7 @@ in with lib; {
       };
       extraConfig = ''
         assign [app_id="Alacritty"] workspace number 1
-        assign [app_id="firefox"] workspace number 3
+        assign [app_id="firefox"] workspace number 2
       '';
     };
   };
