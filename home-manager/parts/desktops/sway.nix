@@ -1,19 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, vars, ... }:
 
-let
-  dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.sway.dotfiles;
-  modifier = config.wayland.windowManager.sway.config.modifier;
+let modifier = config.wayland.windowManager.sway.config.modifier;
 in with lib; {
   options = {
     sway.enable = mkEnableOption
       (mdDoc "sway configuration, make sure to also enable it in nixos");
-    sway.dotfiles = mkOption {
-      type = types.path;
-      default = "/home/toffer/.yadr/dotfiles";
-      description = lib.mdDoc
-        "A path to a directory containing dotfiles for pyprland and waybar";
-    };
-
   };
   config = mkIf (config.sway.enable) {
     home.packages = with pkgs; [
@@ -56,7 +47,7 @@ in with lib; {
           }
           {
             command =
-              "${pkgs.swww}/bin/swww img /home/toffer/.yadr/backgrounds/wallhalla-77-1920x1080.jpg";
+              "${pkgs.swww}/bin/swww img ${vars.homeDir}/.yadr/backgrounds/.local/wallhaven-rrxyxw_1920x1080.png";
             always = true;
           }
           {
