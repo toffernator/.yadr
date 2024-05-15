@@ -29,6 +29,8 @@
 
   programs.zsh.enable = true;
 
+  packages = with pkgs; [ nh ];
+
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {

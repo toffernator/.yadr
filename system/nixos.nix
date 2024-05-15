@@ -18,6 +18,12 @@
   ];
 
   nix.gc.dates = "weekly";
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "${vars.homeDir}/.yadr";
+  };
 
   time.timeZone = "Europe/Amsterdam";
   i18n = {
