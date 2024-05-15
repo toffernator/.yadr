@@ -1,1 +1,1 @@
-{ imports = [ ./gnome.nix ./hyprland.nix ]; }
+{ imports = [ ./gnome.nix ./hyprland.nix ./sway.nix ]; }

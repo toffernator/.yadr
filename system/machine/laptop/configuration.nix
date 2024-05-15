@@ -122,14 +122,5 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
-  # FIXME: This is for Sway, not unique to laptop
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    # TODO: What's the correct choice here? I just followed the error output to get it up and running.
-    config.common.default = "*";
-  };
-
-  networking.networkmanager.enable = true;
-  services.gnome.gnome-keyring.enable = true;
+  sway.enable = true;
 }
