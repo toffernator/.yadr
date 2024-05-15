@@ -5,6 +5,9 @@ return {
         config = function()
             require('ayu').setup({
                 overrides = {
+                    LineNrAbove = { fg = "#d3d3d3" },
+                    LineNr = { fg = "#d3d3d3" },
+                    LineNrBelow = { fg = "#d3d3d3" },
                     Normal = { bg = "None" },
                     ColorColumn = { bg = "None" },
                     SignColumn = { bg = "None" },
@@ -34,5 +37,4 @@ return {
         end
     },
     { "nyoom-engineering/oxocarbon.nvim" },
-    { "xiyaowong/transparent.nvim" }
 }
