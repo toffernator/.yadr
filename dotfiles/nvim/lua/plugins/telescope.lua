@@ -14,7 +14,7 @@ return {
         { "Snikimonkd/telescope-git-conflicts.nvim" },
     },
     event = 'VimEnter',
-    tag = '0.1.x',
+    branch = '0.1.x',
     config = function()
         local telescope = require("telescope")
 
