@@ -28,4 +28,7 @@
 [init]
 	defaultBranch = main
 [rerere]
-	enable = true
+    enable = true
+
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
