@@ -1,10 +1,15 @@
 { config, lib, pkgs, vars, ... }:
 
-let modifier = config.wayland.windowManager.sway.config.modifier;
+let
+  modifier = config.wayland.windowManager.sway.config.modifier;
+  dotfilesDir =
+    config.lib.file.mkOutOfStoreSymlink "${vars.homeDir}/.yadr/dotfiles";
 in with lib; {
   options = {
-    sway.enable = mkEnableOption
-      (mdDoc "sway configuration, make sure to also enable it in nixos");
+    sway = {
+      enable = mkEnableOption
+        (mdDoc "sway configuration, make sure to also enable it in nixos");
+    };
   };
   config = mkIf (config.sway.enable) {
     home.packages = with pkgs; [
@@ -51,7 +56,7 @@ in with lib; {
             always = true;
           }
           {
-            command = "${pkgs.swww}/bin/swww-daemon";
+            command = "${pkgs.swww}/bin/swww-daemon & disown";
             always = true;
           }
         ];
@@ -76,6 +81,14 @@ in with lib; {
         assign [app_id="Alacritty"] workspace number 1
         assign [app_id="firefox"] workspace number 2
       '';
+    };
+
+    home.file = {
+      fuzzel = {
+        enable = true;
+        source = "${dotfilesDir}/fuzzel/fuzzel.ini";
+        target = ".config/fuzzel/fuzzel.ini";
+      };
     };
   };
 }
