@@ -26,6 +26,7 @@ in {
       cargo
       haskell-language-server
       nil
+      nixd
       nodePackages_latest.typescript-language-server
       nodePackages_latest.vscode-langservers-extracted
       nodePackages."@tailwindcss/language-server"
