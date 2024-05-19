@@ -2,7 +2,7 @@
 
 with lib; {
   imports = [ ];
-  options = { bat.enable = mkEnableOption (mdDoc "zoxide; a smarter cd"); };
+  options = { bat.enable = mkEnableOption (mdDoc "A modern cat alternative"); };
   config = mkIf (config.bat.enable) {
     home.packages = with pkgs; [ delta fzf ];
 

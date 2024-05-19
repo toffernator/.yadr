@@ -12,10 +12,10 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./parts/programs/alacritty.nix
-    ./parts/editors/nvim.nix
-    ./parts/utilities/bat.nix
-    ./parts/utilities/git.nix
+    ./parts/programs
+    ./parts/editors
+    ./parts/utilities
+    ./parts/shells
 
     # vars.machine determines which config is mkIf'd
     ./machines
@@ -39,11 +39,6 @@
     alacritty
   ];
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-  };
-
   programs.bash = {
     enable = true;
     bashrcExtra = ''
@@ -52,17 +47,10 @@
     '';
   };
 
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    enableBashIntegration = true;
-  };
-
+  zsh.enable = true;
   alacritty.enable = true;
-  neovim.enable = true;
   git.enable = true;
-  bat.enable = true;
-  zoxide.enable = true;
+  neovim.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";

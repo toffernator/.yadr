@@ -4,14 +4,14 @@ let
   modifier = config.wayland.windowManager.sway.config.modifier;
   dotfilesDir =
     config.lib.file.mkOutOfStoreSymlink "${vars.homeDir}/.yadr/dotfiles";
-in with lib; {
+in {
   options = {
     sway = {
-      enable = mkEnableOption
-        (mdDoc "sway configuration, make sure to also enable it in nixos");
+      enable = lib.mkEnableOption
+        (lib.mdDoc "sway configuration, make sure to also enable it in nixos");
     };
   };
-  config = mkIf (config.sway.enable) {
+  config = lib.mkIf (config.sway.enable) {
     home.packages = with pkgs; [
       fuzzel
       swww
