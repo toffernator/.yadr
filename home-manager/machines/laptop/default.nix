@@ -25,7 +25,6 @@ in {
 
     # You can also split up your configuration and import pieces of it here:
     ../../parts/desktops/sway.nix
-    ../../parts/utilities/zoxide.nix
   ];
 
   config = lib.mkIf (vars.machine == "laptop") {
