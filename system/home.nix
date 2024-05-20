@@ -1,10 +1,11 @@
 { inputs, outputs, vars, lib, config, pkgs, ... }:
 
 let
-  modulePathPart =
+  nixosModulesOrDarwinModules =
     if vars.os == "nixos" then "nixosModules" else "darwinModules";
 in {
-  imports = [ inputs.home-manager."${modulePathPart}".home-manager ];
+  imports =
+    [ inputs.home-manager."${nixosModulesOrDarwinModules}".home-manager ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs vars pkgs; };

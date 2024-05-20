@@ -1,37 +1,21 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, outputs, vars, lib, config, pkgs, ... }:
 
-let
-  packages = with pkgs; [
-    # Apps
-    signal-desktop
-    anki-bin
-
-    zotero
-    ghc
-    cabal-install
-
-    firefox
-  ];
-in {
-  # You can import other home-manager modules here
-  imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
-
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
-    ../../parts/desktops/sway.nix
-  ];
+{
+  imports = [ ../../parts/desktops ];
 
   config = lib.mkIf (vars.machine == "laptop") {
-    programs.home-manager.enable = true;
-
-    home.packages = packages; # ++ packagesUnstable;
     sway.enable = true;
+
+    home.packages = with pkgs; [
+      signal-desktop
+      anki-bin
+
+      zotero
+      ghc
+      cabal-install
+
+      firefox
+    ];
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     home.stateVersion = "23.05";

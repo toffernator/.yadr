@@ -1,16 +1,4 @@
 { inputs, outputs, vars, lib, config, pkgs, ... }: {
-  # You can import other darwin modules here
-  imports = [
-    # If you want to use modules your own flake exports (from modules/nixos):
-    # outputs.nixosModules.example
-
-    # Or modules from other flakes (such as home-manager):
-    # inputs.home-manager.nix-darwin.home-manager
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-  ];
-
   networking = {
     computerName = "whackbook";
     hostName = "whackbook";
@@ -27,10 +15,6 @@
 
   nixpkgs = { hostPlatform = "x86_64-darwin"; };
 
-  programs.zsh.enable = true;
-
-  environment.systemPackages = with pkgs; [ nh ];
-
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {
@@ -42,7 +26,7 @@
     screensaver.askForPasswordDelay = 10;
   };
 
-  fonts = { # Fonts
+  fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
       font-awesome

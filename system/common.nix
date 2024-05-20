@@ -2,13 +2,10 @@
 
 { inputs, outputs, vars, lib, config, pkgs, ... }: {
   nixpkgs = {
-    # You can add overlays here
     overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.stable-packages
-
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -19,11 +16,8 @@
       #   });
       # })
     ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
+
+    config = { allowUnfree = true; };
   };
 
   # This will add each flake input as a registry
@@ -32,13 +26,10 @@
     ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
   nix = {
-    # Nix Package Manager Settings
     gc = {
-      # Garbage Collection
-      automatic = true;
-      options = "--delete-older-than 2d";
+      # Intentionally empty because nh handles gc
     };
-    package = pkgs.nixVersions.git; # Enable Flakes
+    package = pkgs.nixVersions.git;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs          = true
@@ -55,12 +46,17 @@
   }) config.nix.registry;
 
   nix.settings = {
-    # Enable flakes and new 'nix' command
     experimental-features = "nix-command flakes";
-    # Deduplicate and optimize nix store
     auto-optimise-store = true;
     # Allow devenv to manage caches for these users
     trusted-users = [ "root" vars.user ];
+  };
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "${vars.homeDir}/.yadr";
   };
 
   programs.zsh.enable = true;

@@ -23,6 +23,7 @@
     # Use the longterm version from https://kernel.org/, for which you can find
     # find the corresponding package with:
     # $ nix repl
+    # nix-repl> :l <nixpkgs>
     # nix-repl> pkgs.linux_Packages_<TAB>
     kernelPackages = pkgs.linuxPackages_6_8;
   };
@@ -77,6 +78,7 @@
     };
   };
   # Load nvidia driver for Xorg and Wayland
+  # TODO: How is this coupled to open = false?
   services.xserver.videoDrivers = [ "nouveau" ];
 
   # Necessary for pipewire
@@ -109,14 +111,12 @@
         "networkmanager"
         "lp"
         "scanner"
-        "input" # for waybar
         "libvirtd" # for virt-manager
       ];
     };
   };
 
   fonts.packages = with pkgs; [
-    jetbrains-mono
     font-awesome
     corefonts # Microsoft Fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })

@@ -7,8 +7,10 @@
     # Also see the 'stable-packages' overlay at 'overlays/default.nix'.
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -21,7 +23,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
+  outputs = { self, nixpkgs, darwin, ... }@inputs:
     let
       inherit (self) outputs;
       supported-systems = [
