@@ -7,5 +7,30 @@
   # https://github.com/NixOS/nix/issues/7273
   nix.settings.auto-optimise-store = lib.mkForce false;
 
+  system = {
+    defaults = {
+      NSGlobalDomain = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+      };
+      finder = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        QuitMenuItem = true;
+      };
+
+      menuExtraClock = {
+        Show24Hour = true;
+        ShowDate = 0; # When space allows
+      };
+
+    };
+
+    keyboard = {
+      enableKeyMapping = true;
+      swapLeftCommandAndLeftAlt = true;
+    };
+  };
+
   homebrew.casks.enable = true;
 }
