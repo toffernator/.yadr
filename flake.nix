@@ -52,7 +52,7 @@
       homeManagerModules = import ./modules/home-manager;
 
       nixosConfigurations = {
-        laptop = nixpkgs.lib.nixosSystem {
+        lappietoppie = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
             vars = {
@@ -71,7 +71,7 @@
         };
       };
       darwinConfigurations = {
-        macbook = darwin.lib.darwinSystem {
+        whackbook = darwin.lib.darwinSystem {
           specialArgs = {
             inherit inputs outputs;
             vars = {
