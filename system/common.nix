@@ -52,12 +52,5 @@
     trusted-users = [ "root" vars.user ];
   };
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "${vars.homeDir}/.yadr";
-  };
-
   programs.zsh.enable = true;
 }

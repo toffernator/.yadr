@@ -33,6 +33,13 @@
     users = { toffer = { isNormalUser = true; }; };
     defaultUserShell = pkgs.zsh;
   };
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "${vars.homeDir}/.yadr";
+  };
   environment.shells = with pkgs; [ zsh ];
 
   # This setups a SSH server. Very important if you're setting up a headless system.
