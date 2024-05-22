@@ -1,5 +1,5 @@
 # System-level configuration shared across all darwin systems.
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, vars, ... }: {
   # Because of programs.zsh.enableCompletion in ../home-manager/macbook.nix
   environment.pathsToLink = [ "/share/zsh" ];
 
@@ -13,10 +13,18 @@
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
       };
+
       finder = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
         QuitMenuItem = true;
+        FXPreferredViewStyle = "clmv";
+      };
+      screencapture.location = "~/Pictures/screenshots";
+
+      dock = {
+        autohide = true;
+        mru-spaces = false;
       };
 
       menuExtraClock = {
@@ -26,11 +34,27 @@
 
     };
 
-    keyboard = {
-      enableKeyMapping = true;
-      swapLeftCommandAndLeftAlt = true;
-    };
+    keyboard = { enableKeyMapping = true; };
+
   };
+
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      font-awesome
+      corefonts # Microsoft Fonts
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    ];
+  };
+
+  users.users."${vars.user}" = {
+    name = vars.user;
+    home = vars.homeDir;
+    shell = pkgs.zsh;
+  };
+
+  # Auto upgrade nix package and the daemon service.
+  services.nix-daemon.enable = true;
 
   homebrew.casks.enable = true;
 }
