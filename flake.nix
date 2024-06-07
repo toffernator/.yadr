@@ -21,6 +21,7 @@
     # TODO: Consider:
     # hardware.url = "github:nixos/nixos-hardware";
     # nix-colors.url = "github:misterio77/nix-colors";
+    templ.url = "github:a-h/templ";
   };
 
   outputs = { self, nixpkgs, darwin, ... }@inputs:

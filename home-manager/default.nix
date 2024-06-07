@@ -26,7 +26,7 @@
     tldr
     ffmpeg
     devenv
-    rhttp
+    rHttp
     httpie
 
     # Git
