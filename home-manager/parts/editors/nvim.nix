@@ -31,7 +31,7 @@ in {
       nodePackages_latest.vscode-langservers-extracted
       nodePackages."@tailwindcss/language-server"
       nodePackages."@astrojs/language-server"
-      nodePackages_latest.pyright
+      pyright
       gopls
       typst-lsp
       prettierd

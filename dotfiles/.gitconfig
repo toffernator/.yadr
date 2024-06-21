@@ -3,6 +3,7 @@
 	email = "74768013+toffernator@users.noreply.github.com"
 [core]
     editor = nvim
+	autocrlf = input
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
