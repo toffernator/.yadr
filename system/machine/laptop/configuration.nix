@@ -28,12 +28,19 @@
     kernelPackages = pkgs.linuxPackages_6_8;
   };
 
-  systemd.tmpfiles.rules = [
-    # TODO: Figure out what this does and if it still needs to be here.
-    # Temporary Bluetooth Fix
-    "d /var/lib/bluetooth 700 root root - -"
-  ];
-  systemd.targets."bluetooth".after = [ "systemd-tmpfiles-setup.service" ];
+  /* systemd.tmpfiles.rules = [
+       # TODO: Figure out what this does and if it still needs to be here.
+       # Temporary Bluetooth Fix
+       "d /var/lib/bluetooth 700 root root - -"
+     ];
+     systemd.targets."bluetooth".after = [ "systemd-tmpfiles-setup.service" ];
+  */
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
 
   hardware = {
     opengl = {

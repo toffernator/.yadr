@@ -16,10 +16,11 @@ in {
       fuzzel
       swww
       networkmanagerapplet
-      dunst
+      rofi
       grim
       slurp
       wl-clipboard
+      kanshi
     ];
 
     programs.zsh = {
