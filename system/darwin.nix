@@ -39,8 +39,7 @@
   };
 
   fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       font-awesome
       corefonts # Microsoft Fonts
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
