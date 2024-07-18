@@ -42,6 +42,7 @@ in {
       dotnet-sdk_8
       fd
       nixfmt
+      templ
     ]) ++ (with pkgs; [ go ]);
 
     home.file = {

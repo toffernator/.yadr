@@ -56,7 +56,7 @@ in {
             always = true;
           }
           {
-            command = "${pkgs.swww}/bin/swww-daemon & disown";
+            command = "${pkgs.swww}/bin/swww-daemon";
             always = true;
           }
         ];
