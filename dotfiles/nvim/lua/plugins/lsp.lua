@@ -69,6 +69,8 @@ return {
             -- For setting up additional servers see:
             -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
             local servers = {
+                -- dockerls = {},
+                -- docker_compose_language_service = {},
                 html = {},
                 tailwindcss = {},
                 tsserver = {

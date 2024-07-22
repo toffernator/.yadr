@@ -43,6 +43,8 @@ in {
       fd
       nixfmt
       templ
+      docker-compose-language-service
+      dockerfile-language-server-nodejs
     ]) ++ (with pkgs; [ go ]);
 
     home.file = {
