@@ -29,7 +29,7 @@
     gc = {
       # Intentionally empty because nh handles gc
     };
-    package = pkgs.nixVersions.git;
+    package = pkgs.nixVersions.latest;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs          = true

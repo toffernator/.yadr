@@ -35,7 +35,6 @@
     };
 
     keyboard = { enableKeyMapping = true; };
-
   };
 
   fonts = {

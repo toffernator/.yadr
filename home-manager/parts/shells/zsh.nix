@@ -25,7 +25,7 @@
 
       shellAliases = {
         ls = "ls --color";
-        vim = "nvim";
+        ll = "ls -l --color";
       };
 
       plugins = [
