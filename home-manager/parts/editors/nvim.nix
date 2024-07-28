@@ -3,6 +3,8 @@
 let
   cfg = config.neovim;
   dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.neovim.dotfiles;
+  # TODO: Update neovim config to split servers dictionary in lsp.lua into individual files and add to the servers dict from a central lsp.lua file.
+  # Then each lib.mkIf in here can also include that file with home.file to ensure only the servers installed are run. That are do some exception handling.
   technologies = [
     "docker"
     "dotnet"
