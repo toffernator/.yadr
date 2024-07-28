@@ -64,11 +64,9 @@
         whackbook = darwin.lib.darwinSystem {
           specialArgs = {
             inherit inputs outputs;
-            vars = {
+            systemDetails = {
               os = "darwin";
-              machine = "macbook";
-              user = "toffer";
-              homeDir = "/Users/toffer";
+              users = [ "toffer" ];
             };
           };
           modules = [
