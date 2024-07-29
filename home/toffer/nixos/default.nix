@@ -1,8 +1,5 @@
 { ... }: {
-  imports = [ ../part ];
-
-  programs = import ./programs.nix;
-  home.packages = import ./packages.nix;
+  imports = [ ../part ./packages.nix ./programs.nix ];
 
   sway.enable = true;
 }

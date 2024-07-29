@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
-
-with lib; {
+{ config, lib, pkgs, ... }: {
   imports = [ ];
-  options = { bat.enable = mkEnableOption (mdDoc "A modern cat alternative"); };
-  config = mkIf (config.bat.enable) {
+  options = {
+    bat.enable = lib.mkEnableOption (lib.mdDoc "A modern cat alternative");
+  };
+  config = lib.mkIf (config.bat.enable) {
     home.packages = with pkgs; [ delta fzf ];
 
     programs.bat = {

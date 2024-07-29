@@ -22,9 +22,9 @@ in {
   options = {
     neovim = {
       enable = lib.mkEnableOption (lib.mdDoc "neovim");
-      configurationFiles = lib.mkOption {
+      config = lib.mkOption {
         type = lib.types.path;
-        default = "./config";
+        default = ./config/nvim;
         description =
           lib.mdDoc "The folder to place under the path $HOME/.config/nvim.";
       };
@@ -43,7 +43,7 @@ in {
         file = {
           "nvim" = {
             enable = true;
-            source = cfg.configurationFiles;
+            source = cfg.config;
             target = ".config/nvim";
             recursive = true;
           };
@@ -63,9 +63,8 @@ in {
         packages = with pkgs; [ dotnet-sdk_8 omnisharp-roslyn ];
         file.omnisharp = {
           enable = true;
-          source = "${vars.homeDir}/.yadr/dotfiles/omnisharp";
+          source = ./config/omnisharp.json;
           target = ".omnisharp";
-          recursive = true;
         };
       };
     })

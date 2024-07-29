@@ -1,7 +1,11 @@
-{ ... }: {
-  username = "toffer";
-  homeDirectory = "/Users/toffer";
+{ lib, ... }: {
+  imports = [ ./packages.nix ./programs.nix ];
 
-  programs = import ./programs.nix;
-  home.packages = import ./packages.nix;
+  home = {
+    username = "toffer";
+
+    # TODO: Why is this necessay to do?
+    # Either way if this module is imported then this has to be the home.
+    homeDirectory = lib.mkForce "/Users/toffer";
+  };
 }

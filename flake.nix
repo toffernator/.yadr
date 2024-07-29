@@ -5,7 +5,7 @@
     # Unstable just means rolling
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'stable-packages' overlay at 'overlays/default.nix'.
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -69,12 +69,7 @@
               users = [ "toffer" ];
             };
           };
-          modules = [
-            ./system/common.nix
-            ./system/darwin.nix
-            ./system/machine/macbook
-            ./system/home.nix
-          ];
+          modules = [ ./os/common ./os/darwin ./host/whackbook ];
         };
       };
     };

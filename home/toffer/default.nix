@@ -1,7 +1,5 @@
-{ lib, os, ... }: {
-  config = lib.mkMerge [
-    (import ./common)
-    (lib.mkIf (os == "darwin") (import ./darwin))
-    (lib.mkIf (os == "nixos") (import ./nixos))
-  ];
-}
+{ os, ... }:
+let
+  darwinModuleOrEmpty = if (os == "darwin") then [ ./darwin ] else [ ];
+  nixosModuleOrEmpty = if (os == "nixos") then [ ./nixos ] else [ ];
+in { imports = ([ ./common ] ++ darwinModuleOrEmpty ++ nixosModuleOrEmpty); }

@@ -1,8 +1,5 @@
 { ... }: {
-  imports = [ ./part ];
-
-  programs = import ./programs.nix;
-  home.packages = import ./packages.nix;
+  imports = [ ../part ./programs.nix ./packages.nix ];
 
   zsh.enable = true;
   alacritty.enable = true;

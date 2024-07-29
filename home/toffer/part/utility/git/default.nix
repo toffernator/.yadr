@@ -1,18 +1,16 @@
-{ config, lib, pkgs, vars, ... }:
-
-with lib;
-let dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.git.dotfiles;
-in {
+{ config, lib, pkgs, vars, ... }: 
+let cfg = config.git; in
+{
   imports = [ ];
   options = {
-    git.enable = mkEnableOption (mdDoc "");
-    git.dotfiles = mkOption {
-      type = types.path;
-      default = "${vars.homeDir}/.yadr/dotfiles/.gitconfig";
+    git.enable = lib.mkEnableOption (lib.mdDoc "");
+    git.config = lib.mkOption {
+      type = lib.types.path;
+      default = ./.gitconfig;
       description = lib.mdDoc "The path to the dotfiles configuring git";
     };
   };
-  config = mkIf (config.git.enable) {
+  config = lib.mkIf (cfg.enable) {
     programs.git = {
       enable = true;
       delta = {
@@ -25,7 +23,7 @@ in {
     home.file = {
       ".gitconfig" = {
         enable = true;
-        source = "${dotfilesDir}";
+        source = cfg.config;
         target = ".gitconfig";
       };
     };

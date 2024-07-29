@@ -5,10 +5,12 @@ let
     cd = "z";
     cdi = "zi";
   };
-in with lib; {
+in {
   imports = [ ];
-  options = { zoxide.enable = mkEnableOption (mdDoc "zoxide; a smarter cd"); };
-  config = mkIf (config.zoxide.enable) {
+  options = {
+    zoxide.enable = lib.mkEnableOption (lib.mdDoc "zoxide; a smarter cd");
+  };
+  config = lib.mkIf (config.zoxide.enable) {
     home.packages = with pkgs; [ fzf ];
 
     programs.zoxide = {

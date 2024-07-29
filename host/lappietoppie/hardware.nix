@@ -49,21 +49,4 @@
 
   # Necessary for pipewire
   hardware.pulseaudio.enable = false;
-  services = {
-    printing = {
-      # CUPS
-      enable = true;
-    };
-    pipewire = {
-      # For sound
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      pulse.enable = true;
-      jack.enable = true;
-    };
-    flatpak.enable = true;
-  };
-}
+
