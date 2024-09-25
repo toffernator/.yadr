@@ -11,8 +11,8 @@ return {
     config = function()
       -- Black wizardry sets up lsp-zero
       local lsp_zero = require("lsp-zero")
-      lsp_zero.preset("recommended")       -- Can't find any documentation on what this does
-      lsp_zero.extend_lspconfig()          -- Has something to do with cmp integrations
+      lsp_zero.preset("recommended") -- Can't find any documentation on what this does
+      lsp_zero.extend_lspconfig()    -- Has something to do with cmp integrations
       lsp_zero.on_attach(function(_, bufnr)
         local telescope = require("telescope.builtin")
         map("gd", telescope.lsp_definitions, bufnr, "[D]efinition")
@@ -69,8 +69,18 @@ return {
       -- For setting up additional servers see:
       -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
       local servers = {
-        -- dockerls = {},
-        -- docker_compose_language_service = {},
+        bashls = {},
+        ansiblels = {
+          filetypes = { "yaml.ansible", "yaml", "yml" },
+          validation = {
+            enabled = true,
+            lint = {
+              enabled = false
+            },
+          },
+        },
+        dockerls = {},
+        docker_compose_language_service = {},
         html = {},
         tailwindcss = {},
         tsserver = {

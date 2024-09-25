@@ -4,6 +4,8 @@ let
   cfg = config.neovim;
   dotfilesDir = config.lib.file.mkOutOfStoreSymlink config.neovim.dotfiles;
   technologies = [
+    "ansible"
+    "bash"
     "docker"
     "dotnet"
     "go"
@@ -15,7 +17,8 @@ let
     "typst"
     "webdev"
   ];
-
+  bashDependencies = with pkgs.nodePackages_latest; [ bash-language-server ];
+  ansibleDependencies = with pkgs; [ ansible-language-server ansible-lint ];
   dockerDependencies = with pkgs; [
     dockerfile-language-server-nodejs
     docker-compose-language-service
@@ -81,6 +84,14 @@ in {
         };
       };
     }
+
+    (lib.mkIf (builtins.elem "ansible" cfg.technologies) {
+      home.packages = ansibleDependencies;
+    })
+
+    (lib.mkIf (builtins.elem "bash" cfg.technologies) {
+      home.packages = bashDependencies;
+    })
 
     (lib.mkIf (builtins.elem "docker" cfg.technologies) {
       home.packages = dockerDependencies;

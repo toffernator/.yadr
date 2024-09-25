@@ -55,4 +55,6 @@
   services.nix-daemon.enable = true;
 
   homebrew.casks.enable = true;
+
+  system.stateVersion = 5;
 }
