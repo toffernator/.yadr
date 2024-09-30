@@ -73,7 +73,7 @@ in {
   config = lib.mkIf (cfg.enable) (lib.mkMerge [
     {
       home = {
-        packages = with pkgs; [ neovim gcc ripgrep fd ];
+        packages = with pkgs; [ neovim gcc ripgrep fd yaml-language-server ];
         file = {
           "nvim" = {
             enable = true;
