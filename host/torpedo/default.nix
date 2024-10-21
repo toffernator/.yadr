@@ -10,6 +10,8 @@
     efi.canTouchEfiVariables = true;
   };
 
+  security.sudo.wheelNeedsPassword = false;
+
   networking = { hostName = "torpedo"; };
 
   system.stateVersion = "24.05";
