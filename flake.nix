@@ -2,9 +2,7 @@
   description = "Your new nix config";
 
   inputs = {
-    # Unstable just means rolling
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'stable-packages' overlay at 'overlays/default.nix'.
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     home-manager = {
@@ -17,8 +15,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+
     # TODO: Consider:
-    # hardware.url = "github:nixos/nixos-hardware";
     # nix-colors.url = "github:misterio77/nix-colors";
     templ.url = "github:a-h/templ";
   };
@@ -39,7 +38,7 @@
       nixosConfigurations = {
         torpedo = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./host/torpedo.nix ];
+          modules = [ ./host/torpedo ];
         };
         torpedo = nixpkgs.lib.nixosSystem {
 	  specialArgs = {
@@ -62,7 +61,7 @@
       darwinConfigurations = {
         whackbook = darwin.lib.darwinSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./host/whackbook.nix ];
+          modules = [ ./host/whackbook ];
         };
       };
     };
