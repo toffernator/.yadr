@@ -22,7 +22,7 @@
     templ.url = "github:a-h/templ";
   };
 
-  outputs = { self, nixpkgs, darwin, ... }@inputs:
+  outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       supported-systems = [
@@ -40,7 +40,15 @@
       nixosConfigurations = {
         torpedo = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./host/torpedo ];
+          modules = [
+            ./host/torpedo
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.toffer = import ./home/toffer/torpedo.nix;
+            }
+          ];
         };
         torpedo = nixpkgs.lib.nixosSystem {
 	  specialArgs = {
