@@ -1,0 +1,35 @@
+[user]
+	name = toffernator
+	email = "74768013+toffernator@users.noreply.github.com"
+[core]
+    editor = nvim
+	autocrlf = input
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi"
+  a = add
+  ap = add -p
+	s = status
+	st = status
+	ci = commit
+	b = branch
+	co = checkout
+	re = remote
+	d = diff
+	dc = diff --cached
+	lol = log --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit
+	ls = ls-files
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lgi = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
+[init]
+	defaultBranch = main
+[rerere]
+    enable = true
+
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
