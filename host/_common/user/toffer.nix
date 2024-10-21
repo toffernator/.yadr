@@ -1,5 +1,7 @@
 { pkgs, ... }: {
   users.users.toffer = {
+    isNormalUser = true;
+    group = "toffer";
     extraGroups = [
       "wheel"
       "video"
