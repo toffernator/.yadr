@@ -1,6 +1,16 @@
 { config, lib, pkgs, ... }:
 let modifier = config.wayland.windowManager.sway.config.modifier;
 in {
+  imports = [ ../../emulator/foot ];
+
+  fonts.packages = with pkgs; [
+    carlito # NixOS
+    vegur # NixOS
+    font-awesome
+    corefonts # Microsoft Fonts
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
+
   home.packages = with pkgs; [
     fuzzel
     swww
@@ -8,7 +18,6 @@ in {
     grim
     slurp
     wl-clipboard
-    foot
   ];
 
   wayland.windowManager.sway = {
