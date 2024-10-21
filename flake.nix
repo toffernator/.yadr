@@ -35,6 +35,8 @@
 
       forAllSystems = nixpkgs.lib.genAttrs supported-systems;
     in {
+      overlays = { };
+
       nixosConfigurations = {
         torpedo = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
