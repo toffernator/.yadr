@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./nix.nix ./nixpkgs.nix ]; }
+{ ... }: { imports = [ ./i18n.nix ./nix.nix ./nixpkgs.nix ]; }
