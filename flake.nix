@@ -5,7 +5,7 @@
     # Unstable just means rolling
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'stable-packages' overlay at 'overlays/default.nix'.
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -17,7 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
     # TODO: Consider:
     # hardware.url = "github:nixos/nixos-hardware";
     # nix-colors.url = "github:misterio77/nix-colors";
@@ -37,38 +36,10 @@
 
       forAllSystems = nixpkgs.lib.genAttrs supported-systems;
     in {
-      packages =
-        forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-
-      formatter =
-        forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
-
-      overlays = import ./overlays { inherit inputs; };
-
-      # Reusable nixos modules you might want to export
-      # These are usually stuff you would upstream into nixpkgs
-      nixosModules = import ./modules/nixos;
-      # Reusable home-manager modules you might want to export
-      # These are usually stuff you would upstream into home-manager
-      homeManagerModules = import ./modules/home-manager;
-
       nixosConfigurations = {
-        lappietoppie = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs;
-            vars = {
-              os = "nixos";
-              machine = "laptop";
-              user = "toffer";
-              homeDir = "/home/toffer";
-            };
-          };
-          modules = [
-            ./system/common.nix
-            ./system/nixos.nix
-            ./system/machine/laptop
-            ./system/home.nix
-          ];
+        torpedo = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./host/torpedo.nix ];
         };
         torpedo = nixpkgs.lib.nixosSystem {
 	  specialArgs = {
@@ -90,21 +61,8 @@
       };
       darwinConfigurations = {
         whackbook = darwin.lib.darwinSystem {
-          specialArgs = {
-            inherit inputs outputs;
-            vars = {
-              os = "darwin";
-              machine = "macbook";
-              user = "toffer";
-              homeDir = "/Users/toffer";
-            };
-          };
-          modules = [
-            ./system/common.nix
-            ./system/darwin.nix
-            ./system/machine/macbook
-            ./system/home.nix
-          ];
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./host/whackbook.nix ];
         };
       };
     };
