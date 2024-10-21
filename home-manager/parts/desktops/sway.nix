@@ -20,6 +20,7 @@ in {
       grim
       slurp
       wl-clipboard
+      foot
     ];
 
     programs.zsh = {

@@ -70,6 +70,23 @@
             ./system/home.nix
           ];
         };
+        torpedo = nixpkgs.lib.nixosSystem {
+	  specialArgs = {
+	    inherit inputs outputs;
+	    vars = {
+	      os = "nixos";
+	      machine = "torpedo";
+	      user = "toffer";
+	      homeDir = "/home/toffer";
+	    };
+	  };
+	  modules = [ 
+            ./system/common.nix
+            ./system/nixos.nix
+            ./system/machine/torpedo
+            ./system/home.nix
+	  ];
+        };
       };
       darwinConfigurations = {
         whackbook = darwin.lib.darwinSystem {

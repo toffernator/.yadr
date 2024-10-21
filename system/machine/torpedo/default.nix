@@ -1,8 +1,7 @@
 {
   imports = [
     # Import your generated (nixos-generate-config) hardware configuration
-    ./laptop
-    ./macbook
-    ./torpedo
+    ./configuration.nix
+    ./hardware-configuration.nix
   ];
 }
