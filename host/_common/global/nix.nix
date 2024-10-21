@@ -6,7 +6,7 @@ in {
     settings = {
       trusted-users = [ "root" "@wheel" ];
       auto-optimise-store = lib.mkDefault true;
-      experimental-features = [ "nix-command" "flakes" "ca-derivations" ];
+      experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
     };
     gc = {

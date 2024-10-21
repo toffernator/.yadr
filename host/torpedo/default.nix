@@ -4,7 +4,6 @@
     ../_common/global
     ../_common/optional/docker.nix
     ./hardware-configuration.nix
-
   ];
 
   boot.loader = {
