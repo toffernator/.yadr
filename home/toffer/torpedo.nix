@@ -4,7 +4,7 @@
     ../_part/cli/bat.nix
     ../_part/cli/zoxide.nix
 
-    ../_parts/desktop/sway
+    ../_part/desktop/sway
   ];
 
   home = { stateVersion = "24.05"; };
