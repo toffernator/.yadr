@@ -2,7 +2,9 @@
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
     ../_common/global
+    ../_common/optional/docker.nix
     ./hardware-configuration.nix
+
   ];
 
   boot.loader = {
