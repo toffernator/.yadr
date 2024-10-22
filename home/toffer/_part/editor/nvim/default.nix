@@ -27,7 +27,7 @@ let
   goDependencies = with pkgs; [ gopls go templ ];
   haskellDependencies = with pkgs; [ haskell-language-server ];
   luaDependencies = with pkgs; [ lua-language-server ];
-  nixDependencies = with pkgs; [ nil nixd nixfmt ];
+  nixDependencies = with pkgs; [ nil nixd nixfmt-classic ];
   pythonDependencies = with pkgs; [
     # Python312 might be needed by techonolgies other than Python.
     python312

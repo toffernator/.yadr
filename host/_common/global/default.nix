@@ -7,7 +7,6 @@
     ./nix.nix
     ./nixpkgs.nix
     ./security.nix
-    ./sound.nix
     ./upower.nix
     ./zsh.nix
   ];
