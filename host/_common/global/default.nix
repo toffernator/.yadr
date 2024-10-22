@@ -2,6 +2,7 @@
   imports = [
     ./console.nix
     ./i18n.nix
+    ./networking.nix
     ./nix.nix
     ./nixpkgs.nix
     ./security.nix
