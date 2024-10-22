@@ -1,9 +1,9 @@
 { lib, ... }: {
   i18n = {
     defaultLocale = lib.mkDefault "en_US.UTF-8";
-    extraLocaleSettings = { LC_TIME = lib.mkDefault "en_US.UTF-8/UTF-8"; };
+    extraLocaleSettings = { LC_TIME = lib.mkDefault "en_DK.UTF-8/UTF-8"; };
     supportedLocales =
-      lib.mkDefault [ "en_US.UTF-8/UTF-8" "en_NL.UTF-8/UTF-8" ];
+      lib.mkDefault [ "en_US.UTF-8/UTF-8" "en_DK.UTF-8/UTF-8" ];
   };
 
   location.provider = "geoclue2";

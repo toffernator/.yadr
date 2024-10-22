@@ -13,7 +13,7 @@
   home.file = {
     ".gitconfig" = {
       enable = true;
-      source = ".gitconfig";
+      source = ./.gitconfig;
       target = ".gitconfig";
     };
   };

@@ -37,28 +37,18 @@ in {
 
       gaps = { inner = 10; };
 
-      extraConfig = ''
-        assign [app_id="foot"] workspace number 1
-        assign [app_id="firefox"] workspace number 2
-      '';
     };
+    extraConfig = ''
+      assign [app_id="foot"] workspace number 1
+      assign [app_id="firefox"] workspace number 2
+    '';
   };
 
   home.file = {
     fuzzel = {
       enable = true;
-      source = "fuzzel.ini";
+      source = ./fuzzel.ini;
       target = ".config/fuzzel/fuzzel.ini";
     };
-  };
-
-  services.kanshi = {
-    enable = true;
-    extraConfig = ''
-      profile {
-        output HDMI-A-1 mode 1920x1080 pos 1920 0 enable
-        output eDP-1 disable
-      }
-    '';
   };
 }

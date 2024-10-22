@@ -1,20 +1,24 @@
 { pkgs, ... }: {
-  users.users.toffer = {
-    isNormalUser = true;
-    group = "toffer";
-    extraGroups = [
-      "wheel"
-      "video"
-      "audio"
-      "camera"
-      "networkmanager"
-      "lp"
-      "scanner"
-      "libvirtd"
-      "docker"
-    ];
+  users = {
+    users.toffer = {
+      isNormalUser = true;
+      group = "toffer";
+      extraGroups = [
+        "wheel"
+        "video"
+        "audio"
+        "camera"
+        "networkmanager"
+        "lp"
+        "scanner"
+        "libvirtd"
+        "docker"
+      ];
 
-    packages = with pkgs; [ home-manager ];
+      packages = with pkgs; [ home-manager ];
+    };
+
+    groups.toffer = { };
   };
 
   fonts.packages = with pkgs; [
@@ -24,4 +28,5 @@
     corefonts # Microsoft Fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
+
 }

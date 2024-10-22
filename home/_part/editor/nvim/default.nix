@@ -72,7 +72,7 @@ in {
         file = {
           "nvim" = {
             enable = true;
-            source = "nvim";
+            source = ./nvim;
             target = ".config/nvim";
             recursive = true;
           };
@@ -97,7 +97,7 @@ in {
         packages = dotnetDependencies;
         file.omnisharp = {
           enable = true;
-          source = ".omnisharp";
+          source = ./.omnisharp;
           target = ".omnisharp";
           recursive = true;
         };
