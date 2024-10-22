@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ ... }: {
   programs.foot = { enable = true; };
 
   home.file = {
