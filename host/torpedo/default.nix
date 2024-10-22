@@ -6,6 +6,7 @@
 
     ../_common/optional/docker.nix
     ../_common/optional/sound.nix
+    ../_common/optional/gnome.nix
 
     ./hardware-configuration.nix
   ];

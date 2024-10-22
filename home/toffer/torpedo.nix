@@ -12,6 +12,8 @@
       jq
       httpie
       httpie-desktop
+
+      alacritty
     ];
 
     stateVersion = "24.05";
