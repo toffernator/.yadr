@@ -5,12 +5,18 @@
     ../_common/user/toffer.nix
 
     ../_common/optional/docker.nix
+    ../_common/optional/sound.nix
+
     ./hardware-configuration.nix
   ];
 
   boot.loader = {
-    systemd-boot.enable = true;
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 5;
+    };
     efi.canTouchEfiVariables = true;
+    timeout = 1;
   };
 
   security.sudo.wheelNeedsPassword = false;
