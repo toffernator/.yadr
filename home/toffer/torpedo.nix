@@ -1,18 +1,19 @@
 { pkgs, ... }: {
-  imports = [
-    ./_part/cli/git
-    ./_part/cli/bat.nix
-    ./_part/cli/zoxide.nix
-
-    ./_part/editor/nvim
-
-    ./_part/desktop/sway
-  ];
+  imports = [ ./_part/cli ./_part/editor/nvim ./_part/desktop/sway ];
 
   neovim.enable = true;
 
+  programs.zsh = { enable = true; };
+
   home = {
-    packages = with pkgs; [ firefox ];
+    packages = with pkgs; [
+      firefox
+
+      jq
+      httpie
+      httpie-desktop
+    ];
+
     stateVersion = "24.05";
   };
 }
