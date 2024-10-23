@@ -28,5 +28,4 @@
     corefonts # Microsoft Fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-
 }

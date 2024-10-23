@@ -1,5 +1,6 @@
 { pkgs, ... }: {
-  imports = [ ./_part/cli ./_part/editor/nvim ./_part/desktop/sway ];
+  imports =
+    [ ./_part/cli ./_part/desktop/sway ./_part/editor/nvim ./_part/school ];
 
   neovim.enable = true;
 
@@ -7,8 +8,6 @@
 
   home = {
     packages = with pkgs; [
-      firefox
-
       jq
       httpie
       httpie-desktop

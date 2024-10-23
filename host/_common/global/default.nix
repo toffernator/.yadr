@@ -8,6 +8,5 @@
     ./nixpkgs.nix
     ./security.nix
     ./upower.nix
-    ./zsh.nix
   ];
 }

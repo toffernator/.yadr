@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
 let modifier = config.wayland.windowManager.sway.config.modifier;
 in {
-  imports = [ ../../emulator/foot ];
-
   home.packages = with pkgs; [
     fuzzel
     swww
