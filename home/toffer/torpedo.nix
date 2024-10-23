@@ -1,6 +1,11 @@
 { pkgs, ... }: {
-  imports =
-    [ ./_part/cli ./_part/desktop/sway ./_part/editor/nvim ./_part/school ];
+  imports = [
+    ./_part/cli
+    ./_part/desktop/common
+    ./_part/desktop/sway
+    ./_part/editor/nvim
+    ./_part/school
+  ];
 
   neovim.enable = true;
 

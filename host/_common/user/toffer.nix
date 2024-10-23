@@ -19,6 +19,8 @@
     };
 
     groups.toffer = { };
+
+    defaultUserShell = pkgs.zsh;
   };
 
   fonts.packages = with pkgs; [
