@@ -40,7 +40,7 @@
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
-      SHELL = "zsh";
+      SHELL = "${pkgs.zsh}/bin/zsh";
     };
   };
 }
