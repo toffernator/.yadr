@@ -16,11 +16,14 @@
       ];
 
       packages = with pkgs; [ home-manager ];
+
+      shell = pkgs.zsh;
     };
 
     groups.toffer = { };
 
     defaultUserShell = pkgs.zsh;
+
   };
 
   fonts.packages = with pkgs; [
@@ -30,4 +33,14 @@
     corefonts # Microsoft Fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
+
+  programs.zsh.enable = true;
+  environment = {
+    shells = with pkgs; [ zsh ];
+    variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      SHELL = "zsh";
+    };
+  };
 }

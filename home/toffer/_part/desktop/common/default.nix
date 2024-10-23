@@ -1,1 +1,1 @@
-{ imports = [ ./firefox.nix ./foot ./pavucontrol.nix ]; }
+{ imports = [ ./firefox.nix ./foot ./oh-my-posh.nix ./pavucontrol.nix ]; }
