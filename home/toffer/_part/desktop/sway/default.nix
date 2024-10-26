@@ -27,17 +27,21 @@ in {
       };
 
       gaps = { inner = 10; };
-
     };
+
     extraConfig = ''
       assign [app_id="foot"] workspace number 1
       assign [app_id="firefox"] workspace number 2
     '';
+
+    systemd = {
+      enable = true;
+      xdgAutostart = true;
+    };
   };
 
   # TODO: Set-up swaylock and swayidle
   # programs.swaylock.enable = true;
-
   home.file = {
     fuzzel = {
       enable = true;
