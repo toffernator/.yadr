@@ -1,14 +1,7 @@
 { config, lib, pkgs, ... }:
 let modifier = config.wayland.windowManager.sway.config.modifier;
 in {
-  home.packages = with pkgs; [
-    fuzzel
-    swww
-    networkmanagerapplet
-    grim
-    slurp
-    wl-clipboard
-  ];
+  home.packages = with pkgs; [ fuzzel swww grim slurp i3status ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -41,6 +34,9 @@ in {
       assign [app_id="firefox"] workspace number 2
     '';
   };
+
+  # TODO: Set-up swaylock and swayidle
+  # programs.swaylock.enable = true;
 
   home.file = {
     fuzzel = {

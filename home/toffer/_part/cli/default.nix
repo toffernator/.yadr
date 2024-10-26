@@ -1,1 +1,4 @@
-{ ... }: { imports = [ ./git ./fzf.nix ./zoxide.nix ./zsh.nix ]; }
+{ ... }: {
+  imports =
+    [ ./bat.nix ./distrobox.nix ./fzf.nix ./git ./zoxide.nix ./zsh.nix ];
+}
