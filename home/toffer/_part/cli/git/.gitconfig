@@ -10,9 +10,9 @@
 	process = git-lfs filter-process
 	required = true
 [alias]
-	ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi"
-  a = add
-  ap = add -p
+    ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi"
+    a = add
+    ap = add -p
 	s = status
 	st = status
 	ci = commit
