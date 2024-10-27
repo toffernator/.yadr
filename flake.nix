@@ -37,6 +37,14 @@
     in {
       overlays = { };
 
+      templates = {
+        python-poetry = {
+          path = ./templates/python/poetry;
+          description =
+            "Python development environment with Poetry, Ruff, and Pre-commit";
+        };
+      };
+
       nixosConfigurations = {
         torpedo = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };

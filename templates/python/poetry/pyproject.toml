@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = "A template app"
+authors = ["toffernator <74768013+toffernator@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.*"
+
+[tool.poetry.group.develop.dependencies]
+ruff = "0.6.5"
+pre-commit = "3.8.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "8.3.3"
+pytest-asyncio = "0.24.0"
+# On demand infrastructure mocking
+# testcontainers = "4.8.1"
+# Snapshot testing
+# syrupy = "4.7.1" 
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+extend-select = ["I"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
