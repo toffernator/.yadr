@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, ... }: {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
     ../_common/global
@@ -6,6 +6,7 @@
 
     ../_common/optional/docker.nix
     ../_common/optional/sound.nix
+    ../_common/optional/greetd.nix
 
     ./hardware-configuration.nix
   ];
@@ -21,6 +22,19 @@
       efi.canTouchEfiVariables = true;
       timeout = 1;
     };
+  };
+
+  powerManagement.powertop.enable = true;
+  programs = {
+    light.enable = true;
+    adb.enable = true;
+    dconf.enable = true;
+  };
+
+  # Lid settings
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "lock";
   };
 
   security.sudo.wheelNeedsPassword = false;
