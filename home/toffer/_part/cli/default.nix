@@ -1,4 +1,11 @@
 { ... }: {
-  imports =
-    [ ./bat.nix ./distrobox.nix ./fzf.nix ./git ./zoxide.nix ./zsh.nix ];
+  imports = [
+    ./bat.nix
+    ./distrobox.nix
+    ./fzf.nix
+    ./git
+    ./oh-my-posh
+    ./zoxide.nix
+    ./zsh.nix
+  ];
 }

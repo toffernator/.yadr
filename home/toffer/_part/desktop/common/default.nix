@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./firefox.nix ./foot ./oh-my-posh.nix ./pavucontrol.nix ];
+  imports = [ ./firefox.nix ./foot ./pavucontrol.nix ];
 
   home.packages = with pkgs; [ wl-clipboard ];
 }
