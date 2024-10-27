@@ -10,14 +10,21 @@ in {
       warn-dirty = false;
     };
     gc = {
-      automatic = true;
-      dates = "weekly";
-      # Keep the last 3 generations
-      options = "--delete-older-than +3";
+      # Intentionally empty, gc is handled by nh
     };
 
     # Add each flake input as a registry and nix_path
     registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+  };
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      # Keep the last 3 generations
+      extraArgs = "--delete-older-than +3";
+    };
+    flake = "/home/toffer/.yadr";
   };
 }
