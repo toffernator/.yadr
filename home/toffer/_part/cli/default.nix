@@ -4,7 +4,7 @@
     ./distrobox.nix
     ./fzf.nix
     ./git
-    ./oh-my-posh
+    ./oh-my-posh.nix
     ./zoxide.nix
     ./zsh.nix
   ];
