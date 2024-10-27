@@ -1,4 +1,4 @@
-{ ... }: {
+{
   programs.zsh = {
     enable = true;
 
@@ -11,6 +11,9 @@
       save = 5000;
       ignoreAllDups = false;
     };
+
+    syntaxHighlighting.enable = true;
+    autosuggestion.enable = true;
 
     shellAliases = {
       ls = "ls --color";
