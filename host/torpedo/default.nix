@@ -4,9 +4,10 @@
     ../_common/global
     ../_common/user/toffer.nix
 
-    ../_common/optional/docker.nix
-    ../_common/optional/sound.nix
     ../_common/optional/greetd.nix
+    ../_common/optional/sound.nix
+    ../common/optional/bluetooth.nix
+    ../_common/optional/docker.nix
 
     ./hardware-configuration.nix
   ];
