@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
     ../_common/global
@@ -6,14 +6,14 @@
 
     ../_common/optional/greetd.nix
     ../_common/optional/sound.nix
-    ../common/optional/bluetooth.nix
+    ../_common/optional/bluetooth.nix
     ../_common/optional/docker.nix
 
     ./hardware-configuration.nix
   ];
 
   boot = {
-    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     loader = {
       systemd-boot = {
