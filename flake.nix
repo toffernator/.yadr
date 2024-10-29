@@ -38,10 +38,22 @@
       overlays = { };
 
       templates = {
-        python-poetry = {
-          path = ./templates/python/poetry;
-          description =
-            "Python development environment with Poetry, Ruff, and Pre-commit";
+        python = {
+          poetry = {
+            path = ./templates/python/poetry;
+            description =
+              "Python development environment with Poetry, Ruff, and Pre-commit";
+          };
+          venv = {
+            path = ./templates/python/venv;
+            description =
+              "Python development environment with a Python virtual environment and Pip";
+          };
+          spark = {
+            path = ./templates/python/spark;
+            description =
+              "Python development environment with a Python virtual environment configured for use with Spark";
+          };
         };
       };
 
