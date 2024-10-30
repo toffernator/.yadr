@@ -42,5 +42,8 @@
 
   networking = { hostName = "torpedo"; };
 
+  environment.systemPackages =
+    [ inputs.zen-browser.packages.x86_64-linux.specific ];
+
   system.stateVersion = "24.05";
 }
