@@ -49,4 +49,14 @@ in {
       target = ".config/fuzzel/fuzzel.ini";
     };
   };
+
+  services.kanshi = {
+    enable = true;
+    extraConfig = ''
+      profile {
+        output HDMI-A-1 mode 1920x1080 pos 1920 0 enable
+        output eDP-1 disable
+      }
+    '';
+  };
 }
