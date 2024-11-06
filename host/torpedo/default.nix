@@ -8,7 +8,6 @@
     ../_common/optional/sound.nix
     ../_common/optional/bluetooth.nix
     ../_common/optional/docker.nix
-    ../_common/optional/flatpak.nix
 
     ./hardware-configuration.nix
   ];

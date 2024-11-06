@@ -20,7 +20,7 @@
     # TODO: Consider:
     # nix-colors.url = "github:misterio77/nix-colors";
     templ.url = "github:a-h/templ";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser = { url = "github:ch4og/zen-browser-flake"; };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
