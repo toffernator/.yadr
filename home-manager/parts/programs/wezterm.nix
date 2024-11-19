@@ -10,7 +10,7 @@
     #   description = lib.mdDoc "The path to the dotfiles configuring alacritty";
     # };
   };
-  config = lib.mkIf (config.alacritty.enable) {
+  config = lib.mkIf (config.wezterm.enable) {
     programs.wezterm = {
       enable = true;
       enableZshIntegration = true;

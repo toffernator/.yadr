@@ -47,7 +47,6 @@
 
   zsh.enable = true;
   alacritty.enable = true;
-  wezterm.enable = true;
   git.enable = true;
   neovim.enable = true;
 
