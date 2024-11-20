@@ -55,7 +55,7 @@ in {
     extraConfig = ''
       profile {
         output HDMI-A-1 mode 1920x1080 pos 1920 0 enable
-        output eDP-1 disable
+        output eDP-1 enable mode 1920x1080 position 0,0
       }
     '';
   };

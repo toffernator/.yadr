@@ -77,6 +77,9 @@ return {
                 ts_ls = {
                     filetypes = { "astro", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
                 },
+                elixirls = {
+                    cmd = { "/nix/store/q4q6vcqyxch7z4ivlr2n6mcaaljmqih9-elixir-ls-0.24.1/bin/elixir-ls" }
+                },
                 eslint = {
                     on_attach = function(_, bufnr)
                         vim.api.nvim_create_autocmd("BufWritePre", {
