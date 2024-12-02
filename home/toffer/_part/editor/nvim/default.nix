@@ -92,17 +92,17 @@ in {
       home.packages = dockerDependencies;
     })
 
-    (lib.mkIf (builtins.elem "dotnet" cfg.technologies) {
-      home = {
-        packages = dotnetDependencies;
-        file.omnisharp = {
-          enable = true;
-          source = ./.omnisharp;
-          target = ".omnisharp";
-          recursive = true;
-        };
-      };
-    })
+    # (lib.mkIf (builtins.elem "dotnet" cfg.technologies) {
+    #   home = {
+    #     packages = dotnetDependencies;
+    #     file.omnisharp = {
+    #       enable = true;
+    #       source = ./.omnisharp;
+    #       target = ".omnisharp";
+    #       recursive = true;
+    #     };
+    #   };
+    # })
 
     (lib.mkIf (builtins.elem "go" cfg.technologies) {
       home.packages = goDependencies;
