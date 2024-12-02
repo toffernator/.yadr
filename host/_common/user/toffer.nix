@@ -31,7 +31,7 @@
     vegur # NixOS
     font-awesome
     corefonts # Microsoft Fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
   ];
 
   programs.zsh.enable = true;
