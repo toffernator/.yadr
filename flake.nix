@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    sops-nix.url = "github:Mic92/sops-nix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -70,6 +71,10 @@
               home-manager.users.toffer = import ./home/toffer/torpedo.nix;
             }
           ];
+        };
+        lappietoppieIso = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./host/lappietoppie/iso.nix ];
         };
       };
     };
