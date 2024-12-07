@@ -5,6 +5,7 @@
     ./_part/desktop/sway
     ./_part/editor/nvim
     ./_part/school
+    ./_part/vms.nix
   ];
 
   neovim.enable = true;
@@ -16,6 +17,8 @@
       jq
       httpie
       httpie-desktop
+
+      nixos-generators
 
       alacritty
     ];

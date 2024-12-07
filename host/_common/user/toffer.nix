@@ -13,6 +13,9 @@
         "scanner"
         "libvirtd"
         "docker"
+
+        # Solves: authentication unavailable: no polkit agent available to authenticate action 'org.libvirt.unix.manage' 
+        "libvirtd"
       ];
 
       packages = with pkgs; [ home-manager ];
