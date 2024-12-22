@@ -28,11 +28,12 @@ let
   haskellDependencies = with pkgs; [ haskell-language-server ];
   luaDependencies = with pkgs; [ lua-language-server ];
   nixDependencies = with pkgs; [ nil nixd nixfmt ];
-  pythonDependencies = with pkgs; [
-    # Python312 might be needed by techonolgies other than Python.
-    python312
-    pyright
-  ];
+  pythonDependencies = with pkgs;
+    [
+      # Python312 might be needed by techonolgies other than Python.
+      # python312
+      pyright
+    ];
   rustDependencies = with pkgs; [
     # Cargo might be neede by technologies than Rust.
     cargo

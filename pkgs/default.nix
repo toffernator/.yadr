@@ -3,4 +3,5 @@
 pkgs: {
   # example = pkgs.callPackage ./example { };
   dagger = pkgs.callPackage ./dagger { };
+  pydo = pkgs.callPackage ./pydo { };
 }
