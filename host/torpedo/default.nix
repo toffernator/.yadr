@@ -2,7 +2,7 @@
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
     ../_common/global
-    ../_common/user/toffer.nix
+    ../_common/user/toffer/nixos.nix
 
     ../_common/optional/greetd.nix
     ../_common/optional/sound.nix

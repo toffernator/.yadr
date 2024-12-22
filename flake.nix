@@ -15,7 +15,6 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     # TODO: Consider:
@@ -24,7 +23,7 @@
     zen-browser = { url = "github:ch4og/zen-browser-flake"; };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
     let
       inherit (self) outputs;
       supported-systems = [
@@ -77,5 +76,27 @@
           modules = [ ./host/lappietoppie/iso.nix ];
         };
       };
+      darwinConfigurations = {
+        whackbook = darwin.lib.darwinSystem {
+          specialArgs = {
+            inherit inputs outputs;
+            vars = {
+              os = "darwin";
+              machine = "macbook";
+              user = "toffer";
+              homeDir = "/Users/toffer";
+            };
+          };
+          modules = [
+	    ./host/whackbook
+	    home-manager.darwinModules.home-manager
+	    {
+		home-manager.useGlobalPkgs = true;
+		home-manager.useUserPackages = true;
+		home-manager.users.toffer = import ./home/toffer/whackbook.nix;
+	    }
+          ];
+        };
+    };
     };
 }
