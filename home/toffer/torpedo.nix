@@ -2,6 +2,7 @@
   imports = [
     ./_part/cli
     ./_part/desktop/common
+    ./_part/desktop/nixos
     ./_part/desktop/sway
     ./_part/editor/nvim
     ./_part/school
