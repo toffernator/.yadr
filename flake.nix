@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "toffernator's system configurations";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -17,10 +17,8 @@
     };
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
-    # TODO: Consider:
-    # nix-colors.url = "github:misterio77/nix-colors";
     templ.url = "github:a-h/templ";
-    zen-browser = { url = "github:ch4og/zen-browser-flake"; };
+    zen-browser = { url = "github:0xc000022070/zen-browser-flake"; };
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
@@ -86,9 +84,9 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.toffer = import ./home/toffer/whackbook.nix;
-	          }
+            }
           ];
         };
+      };
     };
-  };
 }
