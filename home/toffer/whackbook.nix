@@ -5,7 +5,6 @@
     ./_part/editor/nvim
 
     ./_part/cli/bat.nix
-    ./_part/cli/distrobox.nix
     ./_part/cli/fzf.nix
     ./_part/cli/git
     ./_part/cli/oh-my-posh.nix
