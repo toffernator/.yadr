@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 
-# TODO: Make this a module, instead of a part
 let
   cfg = config.neovim;
   technologies = [
