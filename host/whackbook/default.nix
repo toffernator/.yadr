@@ -1,9 +1,5 @@
-{ inputs, pkgs, ... }: {
-  imports = [
-    # ../_common/global
-    ../_common/user/toffer/macos.nix
-    ../_common/global/nixpkgs.nix
-  ];
+{
+  imports = [ ../_common/user/toffer/macos.nix ../_common/global/nixpkgs.nix ];
 
   networking = {
     computerName = "whackbook";
@@ -16,5 +12,5 @@
 
   system.defaults = { screensaver.askForPasswordDelay = 10; };
 
-	system.stateVersion = 5;
+  system.stateVersion = 5;
 }
