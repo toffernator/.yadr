@@ -78,25 +78,17 @@
       };
       darwinConfigurations = {
         whackbook = darwin.lib.darwinSystem {
-          specialArgs = {
-            inherit inputs outputs;
-            vars = {
-              os = "darwin";
-              machine = "macbook";
-              user = "toffer";
-              homeDir = "/Users/toffer";
-            };
-          };
+          specialArgs = { inherit inputs outputs; };
           modules = [
-	    ./host/whackbook
-	    home-manager.darwinModules.home-manager
-	    {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.toffer = import ./home/toffer/whackbook.nix;
-	    }
+            ./host/whackbook
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.toffer = import ./home/toffer/whackbook.nix;
+	          }
           ];
         };
     };
-    };
+  };
 }
