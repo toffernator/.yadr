@@ -91,9 +91,9 @@
 	    ./host/whackbook
 	    home-manager.darwinModules.home-manager
 	    {
-		home-manager.useGlobalPkgs = true;
-		home-manager.useUserPackages = true;
-		home-manager.users.toffer = import ./home/toffer/whackbook.nix;
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.toffer = import ./home/toffer/whackbook.nix;
 	    }
           ];
         };
