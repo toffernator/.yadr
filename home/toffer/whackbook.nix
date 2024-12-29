@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   imports = [
     # ./_part/cli
-    # ./_part/desktop/common
+    ./_part/desktop/common
     ./_part/editor/nvim
   ];
 
