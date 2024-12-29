@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, zen-browser, ghostty, ... }: {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
     ../_common/global
@@ -43,8 +43,10 @@
 
   networking = { hostName = "torpedo"; };
 
-  environment.systemPackages =
-    [ inputs.zen-browser.packages.x86_64-linux.specific ];
+  environment.systemPackages = [
+    zen-browser.packages.x86_64-linux.specific
+    ghostty.packages.x86_64-linux.default
+  ];
 
   system.stateVersion = "24.05";
 }

@@ -19,9 +19,12 @@
 
     templ.url = "github:a-h/templ";
     zen-browser = { url = "github:0xc000022070/zen-browser-flake"; };
+
+    ghostty = { url = "github:ghostty-org/ghostty"; };
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
+  outputs =
+    { self, nixpkgs, home-manager, darwin, ghostty, zen-browser, ... }@inputs:
     let
       inherit (self) outputs;
       supported-systems = [
